@@ -1,0 +1,1740 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\figure1.log
+  log type:  text
+ opened on:  24 Oct 2018, 17:07:41
+
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta",clear 
+(Written by R.              )
+
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. 
+. 
+. /*uncor_re */
+.  
+.  
+.  codebook cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot , com
+
+Variable   Obs Unique      Mean       Min       Max  Label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cvlfrs     933     17  9.725616         0        16  CVL #Corr A Short-Delay Free Recall
+cvlfrl     933     17  10.23365         0        16  CVL #Corr A Long-Delay Free Recall
+flucat     950     67  15.44484       3.3        94  CategFluency - mean(fruit, animal, veg)
+flulet     951     74  14.67687         1        94  LettrFluency - mean(F, A, S)
+digfor     937     13  8.044824         0        14  WAIS-R Digits Forward Traditional score
+digbac     932     13  6.978541         0        13  WAIS-R Digits Backward Traditional score
+logtrats   951     76  1.502252         1  2.477121  Log transform trats
+logtrbts   924    174   1.89001  1.380211  2.477121  Log transform trbts
+bvrtot     950     28  10.43474         0        27  BVR Total errors
+ca_sum     948     30  16.23523         2        72  
+clk325     832      9       8.5         0        10  Clock 3:25
+clk1110    832      8  8.953125         0        10  Clock 11:10
+crdrot     930    182  83.41935        -7       204  Card Rotations: Total score (correct-incorrect)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2.         standardize `x', replace
+  3. }
+cvlfrs generated as cvlfrs standardized with mean(sd)9.726(3.599), with 27 missing values
+cvlfrl generated as cvlfrl standardized with mean(sd)10.234(3.633), with 27 missing values
+flucat generated as flucat standardized with mean(sd)15.445(4.605), with 10 missing values
+flulet generated as flulet standardized with mean(sd)14.677(5.011), with 9 missing values
+digfor generated as digfor standardized with mean(sd)8.045(2.232), with 23 missing values
+digbac generated as digbac standardized with mean(sd)6.979(2.177), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)1.502(.171), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)1.89(.2), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)10.435(5.532), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)16.235(4.844), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)8.5(1.291), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)8.953(1.332), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)83.419(41.667), with 30 missing values
+flucat generated as flucat standardized with mean(sd)0(1), with 10 missing values
+flulet generated as flulet standardized with mean(sd)0(1), with 9 missing values
+digfor generated as digfor standardized with mean(sd)0(1), with 23 missing values
+digbac generated as digbac standardized with mean(sd)0(1), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)0(1), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)0(1), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)0(1), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)0(1), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)0(1), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)0(1), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)0(1), with 30 missing values
+
+.  
+. 
+.  // discretinize the cognitve variables ? 
+.  
+.  tex \item For the rest of the variables, we used a percentile dicretization approach to discretize variables into up to 9 categories.
+(texdoc not initialized; nothing to do)
+
+. 
+. local i=0
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    cap drop v`++i'
+  3. 
+.    dtize3 `x', bins(9)
+  4. 
+.   rename `x'_cat v`i'
+  5. 
+.    *xtile v`i' = `x' , nquantiles(9)
+. 
+.    local vlab : var label `x'
+  6. 
+.    label var v`i' "`vlab'"
+  7. 
+. }
+Categorization of cvlfrs CVL #Corr A Short-Delay Free Recall
+threshold 1 :   -2.46     
+threshold 2 :   -1.96     
+threshold 3 :   -1.47     
+threshold 4 :   -0.97     
+threshold 5 :   -0.48     
+threshold 6 :    0.01     
+threshold 7 :    0.51     
+threshold 8 :    1.00     
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrs
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of cvlfrl CVL #Corr A Long-Delay Free Recall
+threshold 1 :   -2.57     
+threshold 2 :   -2.08     
+threshold 3 :   -1.59     
+threshold 4 :   -1.10     
+threshold 5 :   -0.61     
+threshold 6 :   -0.13     
+threshold 7 :    0.36     
+threshold 8 :    0.85     
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrl
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+
+. 
+. local i=0 // MEM              EXF         LAN      DSB
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    cap drop u`++i'
+  3. 
+.    egen u`i' = group(`x')
+  4. 
+.    local vlab : var label `x'
+  5. 
+.    label var u`i' "`vlab'"
+  6. 
+. }
+(27 missing values generated)
+(27 missing values generated)
+(10 missing values generated)
+(9 missing values generated)
+(23 missing values generated)
+(28 missing values generated)
+(9 missing values generated)
+(36 missing values generated)
+(10 missing values generated)
+(12 missing values generated)
+(128 missing values generated)
+(128 missing values generated)
+(30 missing values generated)
+(10 missing values generated)
+(9 missing values generated)
+(23 missing values generated)
+(28 missing values generated)
+(9 missing values generated)
+(36 missing values generated)
+(10 missing values generated)
+(12 missing values generated)
+(128 missing values generated)
+(128 missing values generated)
+(30 missing values generated)
+
+. 
+. drop v1 v2 v3 v4 v5 v6 v7
+
+. 
+. 
+. 
+. 
+. // where is the matrix EST
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    eme stdyx_moc_by_`x' , mat(est)
+  3.    local b`x' : di %4.2f `r(r1)'
+  4.    local foo=1
+  5.    eme thresholds_`x'_`foo', mat(est)
+  6.    local t`x' : di %4.2f `r(r1)'
+  7.    
+. }
+matrix est not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. local scatteri ""
+
+. foreach i in `vlist' {
+  2.    local lab`i' : var label `i'
+  3.    *local scatteri `"`scatteri' (scatteri `b`i'' `t`i'' "`lab`i''", mlabpos(9) mcolor(black) msymbol(O) legend(off) mlabsize(4) ) "'
+.    if inlist("`i'","u6","u20","u26","u21","u14","u13","u3","u4")==1 {
+  4.       if inlist("`i'","u3","u4","u13")==1 {
+  5.          local scatteri `"`scatteri' (scatteri `b`i'' `t`i'' "`lab`i''", mlabpos(6)  mcolor(black) msymbol(O) legend(off) mlabsize(3.5) ) "'
+  6.       }
+  7.       else {
+  8.          local scatteri `"`scatteri' (scatteri `b`i'' `t`i'' "`lab`i''", mlabpos(3)  mcolor(black) msymbol(O) legend(off) mlabsize(3.5) ) "'
+  9.       }
+ 10.    }
+ 11.    else {
+ 12.       local scatteri `"`scatteri' (scatteri `b`i'' `t`i'' "`lab`i''", mlabpos(9) mcolor(black) msymbol(O) legend(off) mlabsize(3.5) ) "'
+ 13.    }
+ 14. }
+
+. 
+. 
+end of do-file
+
+. di scatteri
+scatteri not found
+r(111);
+
+. di `scatteri'
+
+
+. help wfenv
+
+. help wfenv
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-305-models.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+. *
+.   
+. *wfenv LasiDIF , a(lasi) alg
+. cd "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\Resources" 
+C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\Resources
+
+. *use $derived/interim-lasi-120.dta, clear
+. 
+.  use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis.dta", clear  
+(Written by R.              )
+
+. 
+.  
+. 
+. * The IRT model for cognitive screening items
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. 
+. codebook cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot , com
+
+Variable    Obs Unique      Mean       Min       Max  Label
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cvlfrs     1038     17  9.842004         0        16  CVL #Corr A Short-Delay Free Recall
+cvlfrl     1038     17  10.29576         0        16  CVL #Corr A Long-Delay Free Recall
+flucat     1062     69  15.47053       3.3        94  CategFluency - mean(fruit, animal, veg)
+flulet     1063     75  14.65541         1        94  LettrFluency - mean(F, A, S)
+digfor     1043     14  8.028763         0        14  WAIS-R Digits Forward Traditional score
+digbac     1036     13  6.980695         0        13  WAIS-R Digits Backward Traditional score
+logtrats   1058     78  1.499061         1  2.477121  Log transform trats
+logtrbts   1029    179  1.889216  1.380211  2.477121  Log transform trbts
+bvrtot     1059     28  10.41265         0        27  BVR Total errors
+ca_sum     1061     31  16.15269         1        72  
+clk325      929      9   8.50592         0        10  Clock 3:25
+clk1110     929      8  8.949408         0        10  Clock 11:10
+crdrot     1037    185  84.17551        -7       204  Card Rotations: Total score (correct-incorrect)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bv
+> rtot ca_sum clk325 clk1110 crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2.         standardize `x', replace
+  3. }
+cvlfrs generated as cvlfrs standardized with mean(sd)9.842(3.65), with 38 missing values
+cvlfrl generated as cvlfrl standardized with mean(sd)10.296(3.651), with 38 missing values
+flucat generated as flucat standardized with mean(sd)15.471(4.558), with 14 missing values
+flulet generated as flulet standardized with mean(sd)14.655(4.901), with 13 missing values
+digfor generated as digfor standardized with mean(sd)8.029(2.251), with 33 missing values
+digbac generated as digbac standardized with mean(sd)6.981(2.17), with 40 missing values
+logtrats generated as logtrats standardized with mean(sd)1.499(.17), with 18 missing values
+logtrbts generated as logtrbts standardized with mean(sd)1.889(.199), with 47 missing values
+bvrtot generated as bvrtot standardized with mean(sd)10.413(5.541), with 17 missing values
+ca_sum generated as ca_sum standardized with mean(sd)16.153(4.792), with 15 missing values
+clk325 generated as clk325 standardized with mean(sd)8.506(1.281), with 147 missing values
+clk1110 generated as clk1110 standardized with mean(sd)8.949(1.319), with 147 missing values
+crdrot generated as crdrot standardized with mean(sd)84.176(41.705), with 39 missing values
+flucat generated as flucat standardized with mean(sd)0(1), with 14 missing values
+flulet generated as flulet standardized with mean(sd)0(1), with 13 missing values
+digfor generated as digfor standardized with mean(sd)0(1), with 33 missing values
+digbac generated as digbac standardized with mean(sd)0(1), with 40 missing values
+logtrats generated as logtrats standardized with mean(sd)0(1), with 18 missing values
+logtrbts generated as logtrbts standardized with mean(sd)0(1), with 47 missing values
+bvrtot generated as bvrtot standardized with mean(sd)0(1), with 17 missing values
+ca_sum generated as ca_sum standardized with mean(sd)0(1), with 15 missing values
+clk325 generated as clk325 standardized with mean(sd)0(1), with 147 missing values
+clk1110 generated as clk1110 standardized with mean(sd)0(1), with 147 missing values
+crdrot generated as crdrot standardized with mean(sd)0(1), with 39 missing values
+
+. 
+. local w1: word 1 of `vlist'
+
+. 
+. runmplus `vlist' idno , ///
+>    idvariable(idno) ///
+>    cat(`vlist' ) ///
+>    analysis(estimator=wlsmv;) ///
+>    model(moc BY `vlist' ; ///
+>       moc BY `w1'* ; ///
+>       moc@1; u6 WITH u10*; u8 WITH u9*; ) ///
+>    output(stdyx; modindices(-1); ) ///
+>    savedata(save=fscores ; ///
+>       file= moc.dat) ///
+>       savelogfile( moc)
+Mplus VERSION 8.1
+MUTHEN & MUTHEN
+10/24/2018   5:17 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+    Variable List -
+
+    cvlfrs : CVL #Corr A Short-Delay Free Recall
+    cvlfrl : CVL #Corr A Long-Delay Free Recall
+    flucat : CategFluency - mean(fruit, animal, veg)
+    flulet : LettrFluency - mean(F, A, S)
+    digfor : WAIS-R Digits Forward Traditional score
+    digbac : WAIS-R Digits Backward Traditional score
+    logtrats : Log transform trats
+    logtrbts : Log transform trbts
+    bvrtot : BVR Total errors
+    ca_sum :
+    clk325 : Clock 3:25
+    clk1110 : Clock 11:10
+    crdrot : Card Rotations: Total score (correct-incorrect)
+    idno : idno
+
+  DATA:
+    FILE = __000001.dat ;
+  VARIABLE:
+    NAMES =
+      cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts
+  bvrtot ca_sum clk325 clk1110 crdrot idno ;
+    MISSING ARE ALL (-9999) ;
+    CATEGORICAL =
+      cvlfrs
+      cvlfrl
+      flucat
+      flulet
+      digfor
+      digbac
+      logtrats
+      logtrbts
+      bvrtot
+      ca_sum
+      clk325
+      clk1110
+      crdrot
+      flucat
+      flulet
+      digfor
+      digbac
+      logtrats
+      logtrbts
+      bvrtot
+      ca_sum
+      clk325
+      clk1110
+      crdrot
+      ;
+    IDVARIABLE = idno ;
+  ANALYSIS:
+  estimator=wlsmv ;
+
+  OUTPUT:
+  stdyx ;
+  modindices(-1) ;
+
+  SAVEDATA:
+  save=fscores  ;
+  file= moc.dat  ;
+
+  MODEL:
+  moc BY cvlfrs cvlfrl flucat flulet digfor digbac logtrats
+  logtrbts bvrtot ca_sum clk325 clk1110 crdrot flucat flulet digfor
+  digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot  ;
+  moc BY cvlfrs*  ;
+  moc@1 ;
+  u6 WITH u10* ;
+  u8 WITH u9* ;
+
+
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  FLUCAT
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  FLULET
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  DIGFOR
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  DIGBAC
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  LOGTRATS
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  LOGTRBTS
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  BVRTOT
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  CA_SUM
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  CLK325
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  CLK1110
+*** WARNING in VARIABLE command
+  Duplicate variable in CATEGORICAL option:
+  CRDROT
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2018 Muthen & Muthen
+
+. mat est = r(estimate)
+
+. 
+. 
+. 
+. local names: rowfullnames est
+
+. di "`names'"
+r1
+
+. lstrfun names , subinstr("`names'","$","_",.)
+
+. matrix rownames est = `names'
+
+. 
+. * Merge in saved results
+. preserve
+
+.    runmplus_load_savedata , out(moc.out) clear
+invalid syntax
+r(198);
+
+end of do-file
+
+r(198);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. sum rage_h
+variable rage_h not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * DIF - alignment analysis
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. local vlist "`r(varlist)'"
+
+. local educ0 "No education"
+
+. local educ1 "Some education"
+
+. runmplus `vlist' educ , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(educ); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>    savelogfile(c:\trash\gcpalignmentm`grp')
+variable educ not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. 
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. local vlist "`r(varlist)'"
+
+. /*
+> local educ0 "No education"
+> local educ1 "Some education"
+> */
+. runmplus `vlist' bptacat  , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(educ); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>    savelogfile(c:\trash\gcpalignmentm`grp')
+  *** ERROR in VARIABLE command
+    Unknown variable specified in KNOWNCLASS option:  EDUC
+
+. mat est = r(estimate)
+
+. 
+. 
+end of do-file
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. 
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. local vlist "cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 
+> clk1110 crdrot"
+
+. /*
+> local educ0 "No education"
+> local educ1 "Some education"
+> */
+. runmplus `vlist' bptacat  , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(bptacat); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>    savelogfile(c:\trash\gcpalignmentm`grp')
+file c:\trash\gcpalignmentm.out could not be opened
+r(603);
+
+end of do-file
+
+r(603);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. 
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. local vlist "cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 
+> clk1110 crdrot"
+
+. /*
+> local educ0 "No education"
+> local educ1 "Some education"
+> */
+. runmplus `vlist' bptacat  , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(bptacat); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>  *  savelogfile(c:\trash\gcpalignmentm`grp')
+file c:\trash\gcpalignmentm.out could not be opened
+r(603);
+
+end of do-file
+
+r(603);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. runmplus `vlist' bptacat  , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(bptacat); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>   savelogfile(c:\trash\gcpalignmentm`grp'),replace
+invalid 'replace' 
+r(198);
+
+end of do-file
+
+r(198);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. 
+. sum rage_h
+variable rage_h not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. 
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. local varlist "`r(varlist)'"
+
+. mplusmimic , uvar(`varlist') groupvar(bptacat ) allowby(`varlist') ///
+>    mod(0) allowthreshold(`varlist') //xvar(rage_h )  lit res bptacat allowthreshold(`varlist')
+
+Running mplusmimc version beta.20170125.0400
+WARNING: The grouping variable bptacat has 92 observations with missing data. These observations are being dropped.
+  
+The output from the final model is saved as 
+mmlastmodel.out in the current working directory
+The final model can be  viewed here (mmlastmodel.out)
+ 
+No items with DIF were found. 
+ 
+ 
+A variable _post_factor_score has been added to the working data file.
+A variable _post_bayes_factor_score has been added to the working data file.
+
+. 
+. 
+end of do-file
+

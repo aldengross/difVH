@@ -1,0 +1,2785 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\IRT_model_hearing.log
+  log type:  text
+ opened on:   6 Nov 2018, 09:08:16
+
+. 
+.  *hearing 
+.  
+. local vlist " u1 u2 u3 u4 u5 u6 u7 u8 u9 u10 u11 u12 u13 u14 u15  u16   "
+
+. local bptacat0 "No hearing impairment"
+
+. local bptacat1 "With hearing impairment"
+
+. 
+. noisily{
+. runmplus `vlist' bptacat , ///
+>    coverage(0) varnocheck ///
+>    cat(`vlist') ///
+>    variable( ///
+>       classes=d(2); ///
+>       knownclass=d(bptacat); ///
+>    ) analysis( ///
+>       type=mixture; ///
+>       !estimator=bayes; ///
+>       !fbiter=1000; thin=40; ///
+>       !chains=1; ///
+>       alignment = fixed(1 ) ; /// this makes the lv to N(0,1) in a reference dataset.
+>       algorithm=integration; ///
+>       process=2; ///
+>    ) model( ///
+>       %OVERALL% ///
+>       f BY `vlist';   ///
+>    ) output(stdyx; align; ) ///
+>    savelogfile(C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\Resources)
+THE MODEL ESTIMATION TERMINATED NORMALLY
+Mplus VERSION 8.1
+MUTHEN & MUTHEN
+11/06/2018   9:08 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+    Variable List -
+
+    u1 : WAIS-R Digits Forward Traditional score
+    u2 : WAIS-R Digits Backward Traditional score
+    u3 : Log transform trats
+      1: 1: logtrats ( 31.18 -  33.22)
+      2: 2: logtrats ( 33.35 -  35.50)
+      3: 3: logtrats ( 35.69 -  37.71)
+      4: 4: logtrats ( 37.98 -  39.86)
+      5: 5: logtrats ( 40.23 -  41.92)
+      6: 6: logtrats ( 42.40 -  44.06)
+      7: 7: logtrats ( 44.70 -  46.12)
+      8: 8: logtrats ( 46.92 -  50.00)
+    u4 : Log transform trbts
+      1: 1: logtrbts ( 25.43 -  27.39)
+      2: 2: logtrbts ( 27.46 -  29.57)
+      3: 3: logtrbts ( 29.63 -  31.62)
+      4: 4: logtrbts ( 31.71 -  33.74)
+      5: 5: logtrbts ( 33.88 -  35.88)
+      6: 6: logtrbts ( 36.08 -  37.98)
+      7: 7: logtrbts ( 38.26 -  40.23)
+      8: 8: logtrbts ( 40.62 -  43.47)
+    u5 : Card Rotations: Total score (correct-incorrect)
+      1: 1: crdrot ( 12.00 -  34.00)
+      2: 2: crdrot ( 35.00 -  56.00)
+      3: 3: crdrot ( 57.00 -  79.00)
+      4: 4: crdrot ( 80.00 - 101.00)
+      5: 5: crdrot (102.00 - 124.00)
+      6: 6: crdrot (125.00 - 147.00)
+      7: 7: crdrot (148.00 - 167.00)
+      8: 8: crdrot (171.00 - 204.00)
+    u6 : Similar Total score
+      1: 1: simtot ( 13.00 -  14.00)
+      2: 2: simtot ( 15.00 -  15.00)
+      3: 3: simtot ( 16.00 -  17.00)
+      4: 4: simtot ( 18.00 -  19.00)
+      5: 5: simtot ( 20.00 -  20.00)
+      6: 6: simtot ( 21.00 -  22.00)
+      7: 7: simtot ( 23.00 -  23.00)
+      8: 8: simtot ( 24.00 -  26.00)
+    u7 : Clock 3:25
+    u8 : Clock 11:10
+    u9 :
+      1: 1: dsstot ( 18.00 -  26.00)
+      2: 2: dsstot ( 27.00 -  34.00)
+      3: 3: dsstot ( 35.00 -  43.00)
+      4: 4: dsstot ( 44.00 -  52.00)
+      5: 5: dsstot ( 53.00 -  60.00)
+      6: 6: dsstot ( 61.00 -  69.00)
+      7: 7: dsstot ( 70.00 -  87.00)
+    u10 : CVL Total correct A
+      1: 1: cvltca ( 23.00 -  31.00)
+      2: 2: cvltca ( 32.00 -  39.00)
+      3: 3: cvltca ( 40.00 -  48.00)
+      4: 4: cvltca ( 49.00 -  57.00)
+      5: 5: cvltca ( 58.00 -  66.00)
+      6: 6: cvltca ( 67.00 -  75.00)
+      7: 7: cvltca ( 76.00 -  80.00)
+    u11 : CVL #Corr A Short-Delay Free Recall
+      1: 1: cvlfrs (  1.00 -   2.00)
+      2: 2: cvlfrs (  3.00 -   4.00)
+      3: 3: cvlfrs (  5.00 -   6.00)
+      4: 4: cvlfrs (  7.00 -   7.00)
+      5: 5: cvlfrs (  8.00 -   9.00)
+      6: 6: cvlfrs ( 10.00 -  11.00)
+      7: 7: cvlfrs ( 12.00 -  13.00)
+      8: 8: cvlfrs ( 14.00 -  16.00)
+    u12 : CVL #Corr A Long-Delay Free Recall
+      1: 1: cvlfrl (  1.00 -   2.00)
+      2: 2: cvlfrl (  3.00 -   4.00)
+      3: 3: cvlfrl (  5.00 -   6.00)
+      4: 4: cvlfrl (  7.00 -   7.00)
+      5: 5: cvlfrl (  8.00 -   9.00)
+      6: 6: cvlfrl ( 10.00 -  11.00)
+      7: 7: cvlfrl ( 12.00 -  13.00)
+      8: 8: cvlfrl ( 14.00 -  16.00)
+    u13 : BVR Total errors
+      1: 1: bvrtot (  2.00 -   3.00)
+      2: 2: bvrtot (  4.00 -   6.00)
+      3: 3: bvrtot (  7.00 -   8.00)
+      4: 4: bvrtot (  9.00 -  10.00)
+      5: 5: bvrtot ( 11.00 -  13.00)
+      6: 6: bvrtot ( 14.00 -  15.00)
+      7: 7: bvrtot ( 16.00 -  18.00)
+      8: 8: bvrtot ( 19.00 -  22.00)
+    u14 : CategFluency - mean(fruit, animal, veg)
+      1: 1: flucat (  7.00 -   9.30)
+      2: 2: flucat (  9.70 -  11.70)
+      3: 3: flucat ( 12.00 -  14.00)
+      4: 4: flucat ( 14.30 -  16.30)
+      5: 5: flucat ( 16.70 -  18.70)
+      6: 6: flucat ( 19.00 -  21.30)
+      7: 7: flucat ( 21.70 -  23.70)
+    u15 : LettrFluency - mean(F, A, S)
+      1: 1: flulet (  5.70 -   8.70)
+      2: 2: flulet (  9.00 -  11.70)
+      3: 3: flulet ( 12.00 -  14.70)
+      4: 4: flulet ( 15.00 -  18.00)
+      5: 5: flulet ( 18.30 -  21.00)
+      6: 6: flulet ( 21.30 -  24.00)
+      7: 7: flulet ( 25.00 -  29.00)
+    u16 : BostonNaming - # correct of 60
+      1: 1: boscor ( 45.00 -  46.00)
+      2: 2: boscor ( 47.00 -  48.00)
+      3: 3: boscor ( 49.00 -  50.00)
+      4: 4: boscor ( 51.00 -  52.00)
+      5: 5: boscor ( 53.00 -  53.00)
+      6: 6: boscor ( 54.00 -  55.00)
+      7: 7: boscor ( 56.00 -  57.00)
+      8: 8: boscor ( 58.00 -  60.00)
+    bptacat : PTA binary <=25 vs. >25
+      0: Normal Hearing
+      1: Hearing Impairment
+
+  DATA:
+    VARIANCES = nocheck ;
+    FILE = __000001.dat ;
+  VARIABLE:
+    NAMES =
+      u1 u2 u3 u4 u5 u6 u7 u8 u9 u10 u11 u12 u13 u14 u15 u16 bptacat ;
+    MISSING ARE ALL (-9999) ;
+    CATEGORICAL =
+      u1
+      u2
+      u3
+      u4
+      u5
+      u6
+      u7
+      u8
+      u9
+      u10
+      u11
+      u12
+      u13
+      u14
+      u15
+      u16
+      ;
+  classes=d(2) ;
+  knownclass=d(bptacat) ;
+
+  ANALYSIS:
+     COVERAGE = 0 ;
+  type=mixture ;
+  !estimator=bayes ;
+  !fbiter=1000 ;
+  thin=40 ;
+  !chains=1 ;
+  alignment = fixed(1 )  ;
+  algorithm=integration ;
+  process=2 ;
+
+  OUTPUT:
+  stdyx ;
+  align ;
+
+  MODEL:
+  %OVERALL%
+  f BY u1 u2 u3 u4 u5 u6 u7 u8 u9 u10 u11 u12 u13 u14 u15
+  u16  ;
+
+
+
+
+*** WARNING in ANALYSIS command
+  The THIN option is not available with this analysis.
+  THIN will be ignored.
+  Specify ESTIMATOR=BAYES to use this option.
+*** WARNING in OUTPUT command
+  STANDARDIZED (STD, STDY, STDYX) options are not available for analysis with
+  ALIGNMENT=FREE or ALIGNMENT=FIXED.
+  Request for STANDARDIZED (STD, STDY, STDYX) is ignored.
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  3
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Variable List -
+
+u1 : WAIS-R Digits Forward Traditional score
+u2 : WAIS-R Digits Backward Traditional score
+u3 : Log transform trats
+1: 1: logtrats ( 31.18 -  33.22)
+2: 2: logtrats ( 33.35 -  35.50)
+3: 3: logtrats ( 35.69 -  37.71)
+4: 4: logtrats ( 37.98 -  39.86)
+5: 5: logtrats ( 40.23 -  41.92)
+6: 6: logtrats ( 42.40 -  44.06)
+7: 7: logtrats ( 44.70 -  46.12)
+8: 8: logtrats ( 46.92 -  50.00)
+u4 : Log transform trbts
+1: 1: logtrbts ( 25.43 -  27.39)
+2: 2: logtrbts ( 27.46 -  29.57)
+3: 3: logtrbts ( 29.63 -  31.62)
+4: 4: logtrbts ( 31.71 -  33.74)
+5: 5: logtrbts ( 33.88 -  35.88)
+6: 6: logtrbts ( 36.08 -  37.98)
+7: 7: logtrbts ( 38.26 -  40.23)
+8: 8: logtrbts ( 40.62 -  43.47)
+u5 : Card Rotations: Total score (correct-incorrect)
+1: 1: crdrot ( 12.00 -  34.00)
+2: 2: crdrot ( 35.00 -  56.00)
+3: 3: crdrot ( 57.00 -  79.00)
+4: 4: crdrot ( 80.00 - 101.00)
+5: 5: crdrot (102.00 - 124.00)
+6: 6: crdrot (125.00 - 147.00)
+7: 7: crdrot (148.00 - 167.00)
+8: 8: crdrot (171.00 - 204.00)
+u6 : Similar Total score
+1: 1: simtot ( 13.00 -  14.00)
+2: 2: simtot ( 15.00 -  15.00)
+3: 3: simtot ( 16.00 -  17.00)
+4: 4: simtot ( 18.00 -  19.00)
+5: 5: simtot ( 20.00 -  20.00)
+6: 6: simtot ( 21.00 -  22.00)
+7: 7: simtot ( 23.00 -  23.00)
+8: 8: simtot ( 24.00 -  26.00)
+u7 : Clock 3:25
+u8 : Clock 11:10
+u9 :
+1: 1: dsstot ( 18.00 -  26.00)
+2: 2: dsstot ( 27.00 -  34.00)
+3: 3: dsstot ( 35.00 -  43.00)
+4: 4: dsstot ( 44.00 -  52.00)
+5: 5: dsstot ( 53.00 -  60.00)
+6: 6: dsstot ( 61.00 -  69.00)
+7: 7: dsstot ( 70.00 -  87.00)
+u10 : CVL Total correct A
+1: 1: cvltca ( 23.00 -  31.00)
+2: 2: cvltca ( 32.00 -  39.00)
+3: 3: cvltca ( 40.00 -  48.00)
+4: 4: cvltca ( 49.00 -  57.00)
+5: 5: cvltca ( 58.00 -  66.00)
+6: 6: cvltca ( 67.00 -  75.00)
+7: 7: cvltca ( 76.00 -  80.00)
+u11 : CVL #Corr A Short-Delay Free Recall
+1: 1: cvlfrs (  1.00 -   2.00)
+2: 2: cvlfrs (  3.00 -   4.00)
+3: 3: cvlfrs (  5.00 -   6.00)
+4: 4: cvlfrs (  7.00 -   7.00)
+5: 5: cvlfrs (  8.00 -   9.00)
+6: 6: cvlfrs ( 10.00 -  11.00)
+7: 7: cvlfrs ( 12.00 -  13.00)
+8: 8: cvlfrs ( 14.00 -  16.00)
+u12 : CVL #Corr A Long-Delay Free Recall
+1: 1: cvlfrl (  1.00 -   2.00)
+2: 2: cvlfrl (  3.00 -   4.00)
+3: 3: cvlfrl (  5.00 -   6.00)
+4: 4: cvlfrl (  7.00 -   7.00)
+5: 5: cvlfrl (  8.00 -   9.00)
+6: 6: cvlfrl ( 10.00 -  11.00)
+7: 7: cvlfrl ( 12.00 -  13.00)
+8: 8: cvlfrl ( 14.00 -  16.00)
+u13 : BVR Total errors
+1: 1: bvrtot (  2.00 -   3.00)
+2: 2: bvrtot (  4.00 -   6.00)
+3: 3: bvrtot (  7.00 -   8.00)
+4: 4: bvrtot (  9.00 -  10.00)
+5: 5: bvrtot ( 11.00 -  13.00)
+6: 6: bvrtot ( 14.00 -  15.00)
+7: 7: bvrtot ( 16.00 -  18.00)
+8: 8: bvrtot ( 19.00 -  22.00)
+u14 : CategFluency - mean(fruit, animal, veg)
+1: 1: flucat (  7.00 -   9.30)
+2: 2: flucat (  9.70 -  11.70)
+3: 3: flucat ( 12.00 -  14.00)
+4: 4: flucat ( 14.30 -  16.30)
+5: 5: flucat ( 16.70 -  18.70)
+6: 6: flucat ( 19.00 -  21.30)
+7: 7: flucat ( 21.70 -  23.70)
+u15 : LettrFluency - mean(F, A, S)
+1: 1: flulet (  5.70 -   8.70)
+2: 2: flulet (  9.00 -  11.70)
+3: 3: flulet ( 12.00 -  14.70)
+4: 4: flulet ( 15.00 -  18.00)
+5: 5: flulet ( 18.30 -  21.00)
+6: 6: flulet ( 21.30 -  24.00)
+7: 7: flulet ( 25.00 -  29.00)
+u16 : BostonNaming - # correct of 60
+1: 1: boscor ( 45.00 -  46.00)
+2: 2: boscor ( 47.00 -  48.00)
+3: 3: boscor ( 49.00 -  50.00)
+4: 4: boscor ( 51.00 -  52.00)
+5: 5: boscor ( 53.00 -  53.00)
+6: 6: boscor ( 54.00 -  55.00)
+7: 7: boscor ( 56.00 -  57.00)
+8: 8: boscor ( 58.00 -  60.00)
+bptacat : PTA binary <=25 vs. >25
+0: Normal Hearing
+1: Hearing Impairment
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         957
+
+Number of dependent variables                                   16
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   U1          U2          U3          U4          U5          U6
+   U7          U8          U9          U10         U11         U12
+   U13         U14         U15         U16
+
+Continuous latent variables
+   F
+
+Categorical latent variables
+   D
+
+  Knownclass            D
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+Link                                                         LOGIT
+Specifications for Alignment Analysis
+  Factor mean for reference group                            FIXED
+  Simplicity function                                         SQRT
+  Factor variance metric                           Reference group
+  Reference group                                                1
+  Tolerance value                                        0.100D-01
+  Number of random starts                                       30
+  Maximum number of iterations                                5000
+  Convergence criteration                                0.100D-02
+Cholesky                                                       OFF
+
+Input data file(s)
+  __000001.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            42
+     Number of y missing data patterns           0
+     Number of u missing data patterns          42
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.000
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              U1            U2            U3            U4            U5
+              ________      ________      ________      ________      ________
+ U1             0.979
+ U2             0.970         0.974
+ U3             0.974         0.970         0.994
+ U4             0.946         0.941         0.964         0.966
+ U5             0.951         0.948         0.967         0.941         0.971
+ U6             0.973         0.968         0.985         0.956         0.962
+ U7             0.853         0.848         0.864         0.836         0.843
+ U8             0.853         0.848         0.864         0.836         0.843
+ U9             0.951         0.948         0.961         0.934         0.945
+ U10            0.958         0.955         0.971         0.944         0.953
+ U11            0.957         0.954         0.969         0.941         0.953
+ U12            0.957         0.954         0.969         0.941         0.953
+ U13            0.972         0.967         0.989         0.960         0.968
+ U14            0.972         0.969         0.986         0.958         0.966
+ U15            0.973         0.969         0.987         0.959         0.967
+ U16            0.847         0.843         0.860         0.832         0.840
+
+
+           Covariance Coverage
+              U6            U7            U8            U9            U10
+              ________      ________      ________      ________      ________
+ U6             0.991
+ U7             0.860         0.869
+ U8             0.860         0.868         0.869
+ U9             0.958         0.839         0.839         0.964
+ U10            0.969         0.848         0.848         0.944         0.977
+ U11            0.967         0.847         0.847         0.943         0.975
+ U12            0.967         0.847         0.847         0.943         0.975
+ U13            0.983         0.863         0.863         0.959         0.970
+ U14            0.982         0.864         0.864         0.958         0.971
+ U15            0.983         0.865         0.865         0.959         0.971
+ U16            0.856         0.863         0.863         0.835         0.845
+
+
+           Covariance Coverage
+              U11           U12           U13           U14           U15
+              ________      ________      ________      ________      ________
+ U11            0.975
+ U12            0.975         0.975
+ U13            0.968         0.968         0.993
+ U14            0.970         0.970         0.989         0.992
+ U15            0.970         0.970         0.990         0.992         0.993
+ U16            0.844         0.844         0.863         0.864         0.865
+
+
+           Covariance Coverage
+              U16
+              ________
+ U16            0.865
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    U1
+      Category 1    0.032           30.000
+      Category 2    0.072           67.000
+      Category 3    0.189          177.000
+      Category 4    0.128          120.000
+      Category 5    0.188          176.000
+      Category 6    0.133          125.000
+      Category 7    0.094           88.000
+      Category 8    0.090           84.000
+      Category 9    0.075           70.000
+    U2
+      Category 1    0.025           23.000
+      Category 2    0.092           86.000
+      Category 3    0.130          121.000
+      Category 4    0.207          193.000
+      Category 5    0.177          165.000
+      Category 6    0.139          130.000
+      Category 7    0.098           91.000
+      Category 8    0.064           60.000
+      Category 9    0.031           29.000
+      Category 10    0.036           34.000
+    U3
+      Category 1    0.013           12.000
+      Category 2    0.021           20.000
+      Category 3    0.077           73.000
+      Category 4    0.162          154.000
+      Category 5    0.212          202.000
+      Category 6    0.199          189.000
+      Category 7    0.145          138.000
+      Category 8    0.087           83.000
+      Category 9    0.084           80.000
+    U4
+      Category 1    0.024           22.000
+      Category 2    0.051           47.000
+      Category 3    0.144          133.000
+      Category 4    0.241          223.000
+      Category 5    0.251          232.000
+      Category 6    0.170          157.000
+      Category 7    0.081           75.000
+      Category 8    0.038           35.000
+    U5
+      Category 1    0.023           21.000
+      Category 2    0.088           82.000
+      Category 3    0.161          150.000
+      Category 4    0.234          217.000
+      Category 5    0.179          166.000
+      Category 6    0.144          134.000
+      Category 7    0.087           81.000
+      Category 8    0.048           45.000
+      Category 9    0.036           33.000
+    U6
+      Category 1    0.022           21.000
+      Category 2    0.023           22.000
+      Category 3    0.015           14.000
+      Category 4    0.060           57.000
+      Category 5    0.118          112.000
+      Category 6    0.093           88.000
+      Category 7    0.276          262.000
+      Category 8    0.147          139.000
+      Category 9    0.246          233.000
+    U7
+      Category 1    0.025           21.000
+      Category 2    0.036           30.000
+      Category 3    0.093           77.000
+      Category 4    0.237          197.000
+      Category 5    0.444          369.000
+      Category 6    0.166          138.000
+    U8
+      Category 1    0.048           40.000
+      Category 2    0.060           50.000
+      Category 3    0.174          145.000
+      Category 4    0.278          231.000
+      Category 5    0.440          366.000
+    U9
+      Category 1    0.016           15.000
+      Category 2    0.095           88.000
+      Category 3    0.205          189.000
+      Category 4    0.278          257.000
+      Category 5    0.208          192.000
+      Category 6    0.118          109.000
+      Category 7    0.079           73.000
+    U10
+      Category 1    0.020           19.000
+      Category 2    0.059           55.000
+      Category 3    0.130          122.000
+      Category 4    0.225          210.000
+      Category 5    0.276          258.000
+      Category 6    0.187          175.000
+      Category 7    0.087           81.000
+      Category 8    0.016           15.000
+    U11
+      Category 1    0.014           13.000
+      Category 2    0.019           18.000
+      Category 3    0.045           42.000
+      Category 4    0.108          101.000
+      Category 5    0.084           78.000
+      Category 6    0.191          178.000
+      Category 7    0.193          180.000
+      Category 8    0.183          171.000
+      Category 9    0.163          152.000
+    U12
+      Category 1    0.015           14.000
+      Category 2    0.013           12.000
+      Category 3    0.039           36.000
+      Category 4    0.089           83.000
+      Category 5    0.071           66.000
+      Category 6    0.171          160.000
+      Category 7    0.203          189.000
+      Category 8    0.195          182.000
+      Category 9    0.205          191.000
+    U13
+      Category 1    0.038           36.000
+      Category 2    0.057           54.000
+      Category 3    0.106          101.000
+      Category 4    0.094           89.000
+      Category 5    0.111          105.000
+      Category 6    0.201          191.000
+      Category 7    0.121          115.000
+      Category 8    0.155          147.000
+      Category 9    0.118          112.000
+    U14
+      Category 1    0.059           56.000
+      Category 2    0.116          110.000
+      Category 3    0.213          202.000
+      Category 4    0.241          229.000
+      Category 5    0.198          188.000
+      Category 6    0.114          108.000
+      Category 7    0.059           56.000
+    U15
+      Category 1    0.086           82.000
+      Category 2    0.181          172.000
+      Category 3    0.261          248.000
+      Category 4    0.278          264.000
+      Category 5    0.121          115.000
+      Category 6    0.059           56.000
+      Category 7    0.014           13.000
+    U16
+      Category 1    0.076           63.000
+      Category 2    0.035           29.000
+      Category 3    0.034           28.000
+      Category 4    0.046           38.000
+      Category 5    0.091           75.000
+      Category 6    0.052           43.000
+      Category 7    0.151          125.000
+      Category 8    0.220          182.000
+      Category 9    0.296          245.000
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE CHI-SQUARE TEST CANNOT BE COMPUTED BECAUSE THE FREQUENCY TABLE FOR THE
+     LATENT CLASS INDICATOR MODEL PART IS TOO LARGE.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      261
+
+Loglikelihood
+
+          H0 Value                      -25442.625
+          H0 Scaling Correction Factor      1.0666
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   51407.250
+          Bayesian (BIC)                 52676.703
+          Sample-Size Adjusted BIC       51847.776
+            (n* = (n + 2) / 24)
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        507.00000          0.52978
+       2        450.00000          0.47022
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1 (1)
+
+ F        BY
+    U1                 0.395      0.112      3.537      0.000
+    U2                 0.687      0.112      6.117      0.000
+    U3                 0.797      0.122      6.550      0.000
+    U4                 0.895      0.138      6.477      0.000
+    U5                 0.623      0.113      5.537      0.000
+    U6                 0.826      0.116      7.099      0.000
+    U7                 0.623      0.118      5.302      0.000
+    U8                 0.616      0.123      5.004      0.000
+    U9                 0.931      0.134      6.975      0.000
+    U10                4.823      0.374     12.906      0.000
+    U11                4.804      0.454     10.589      0.000
+    U12                5.161      0.485     10.633      0.000
+    U13                0.794      0.098      8.114      0.000
+    U14                1.376      0.138      9.949      0.000
+    U15                0.604      0.102      5.905      0.000
+    U16                0.919      0.120      7.682      0.000
+
+ Means
+    F                  0.000      0.000    999.000    999.000
+
+ Thresholds
+    U1$1              -3.218      0.228    -14.112      0.000
+    U1$2              -1.928      0.135    -14.311      0.000
+    U1$3              -0.697      0.098     -7.082      0.000
+    U1$4              -0.148      0.095     -1.565      0.117
+    U1$5               0.651      0.099      6.572      0.000
+    U1$6               1.337      0.114     11.769      0.000
+    U1$7               2.052      0.142     14.403      0.000
+    U1$8               2.876      0.199     14.473      0.000
+    U2$1              -3.588      0.247    -14.553      0.000
+    U2$2              -2.002      0.140    -14.264      0.000
+    U2$3              -0.988      0.109     -9.079      0.000
+    U2$4               0.041      0.099      0.417      0.677
+    U2$5               0.860      0.108      7.992      0.000
+    U2$6               1.639      0.128     12.770      0.000
+    U2$7               2.315      0.155     14.905      0.000
+    U2$8               2.950      0.198     14.860      0.000
+    U2$9               3.886      0.294     13.216      0.000
+    U3$1              -4.216      0.305    -13.824      0.000
+    U3$2              -3.025      0.193    -15.637      0.000
+    U3$3              -1.813      0.134    -13.477      0.000
+    U3$4              -0.618      0.104     -5.947      0.000
+    U3$5               0.441      0.103      4.299      0.000
+    U3$6               1.398      0.121     11.581      0.000
+    U3$7               2.528      0.167     15.155      0.000
+    U3$8               3.690      0.264     13.970      0.000
+    U4$1              -3.908      0.264    -14.790      0.000
+    U4$2              -2.425      0.164    -14.778      0.000
+    U4$3              -0.995      0.114     -8.737      0.000
+    U4$4               0.413      0.108      3.807      0.000
+    U4$5               1.725      0.141     12.254      0.000
+    U4$6               3.394      0.226     14.993      0.000
+    U4$7               5.179      0.510     10.153      0.000
+    U5$1              -3.539      0.253    -13.975      0.000
+    U5$2              -1.968      0.136    -14.434      0.000
+    U5$3              -0.728      0.103     -7.045      0.000
+    U5$4               0.423      0.101      4.202      0.000
+    U5$5               1.292      0.118     10.924      0.000
+    U5$6               2.210      0.153     14.482      0.000
+    U5$7               2.925      0.196     14.891      0.000
+    U5$8               3.627      0.264     13.730      0.000
+    U6$1              -4.251      0.312    -13.623      0.000
+    U6$2              -3.368      0.221    -15.250      0.000
+    U6$3              -3.019      0.198    -15.275      0.000
+    U6$4              -2.159      0.145    -14.926      0.000
+    U6$5              -1.343      0.117    -11.502      0.000
+    U6$6              -0.796      0.106     -7.495      0.000
+    U6$7               0.518      0.106      4.894      0.000
+    U6$8               1.258      0.118     10.627      0.000
+    U7$1              -3.584      0.244    -14.703      0.000
+    U7$2              -2.846      0.181    -15.726      0.000
+    U7$3              -1.625      0.124    -13.080      0.000
+    U7$4              -0.398      0.099     -4.025      0.000
+    U7$5               1.780      0.132     13.442      0.000
+    U8$1              -3.284      0.216    -15.173      0.000
+    U8$2              -2.208      0.148    -14.866      0.000
+    U8$3              -0.942      0.107     -8.825      0.000
+    U8$4               0.307      0.098      3.147      0.002
+    U9$1              -4.090      0.300    -13.636      0.000
+    U9$2              -1.707      0.132    -12.898      0.000
+    U9$3              -0.207      0.106     -1.955      0.051
+    U9$4               1.261      0.125     10.053      0.000
+    U9$5               2.684      0.184     14.568      0.000
+    U9$6               4.123      0.308     13.375      0.000
+    U10$1             -9.314      0.718    -12.970      0.000
+    U10$2             -5.526      0.457    -12.082      0.000
+    U10$3             -2.603      0.325     -8.022      0.000
+    U10$4              0.596      0.282      2.114      0.034
+    U10$5              4.209      0.395     10.656      0.000
+    U10$6              7.304      0.567     12.883      0.000
+    U10$7             10.504      0.919     11.426      0.000
+    U11$1            -10.482      1.054     -9.942      0.000
+    U11$2             -8.017      0.747    -10.736      0.000
+    U11$3             -5.754      0.566    -10.163      0.000
+    U11$4             -3.139      0.392     -8.009      0.000
+    U11$5             -1.830      0.325     -5.626      0.000
+    U11$6              0.742      0.274      2.709      0.007
+    U11$7              3.570      0.372      9.603      0.000
+    U11$8              6.469      0.563     11.486      0.000
+    U12$1            -10.747      1.059    -10.149      0.000
+    U12$2             -8.946      0.815    -10.970      0.000
+    U12$3             -6.432      0.602    -10.684      0.000
+    U12$4             -4.027      0.457     -8.820      0.000
+    U12$5             -2.725      0.381     -7.152      0.000
+    U12$6              0.145      0.294      0.492      0.623
+    U12$7              2.647      0.349      7.596      0.000
+    U12$8              5.995      0.532     11.278      0.000
+    U13$1             -3.250      0.220    -14.781      0.000
+    U13$2             -2.252      0.151    -14.961      0.000
+    U13$3             -1.219      0.114    -10.700      0.000
+    U13$4             -0.625      0.104     -5.992      0.000
+    U13$5             -0.071      0.101     -0.702      0.483
+    U13$6              0.875      0.107      8.213      0.000
+    U13$7              1.580      0.122     12.929      0.000
+    U13$8              2.893      0.188     15.406      0.000
+    U14$1             -2.824      0.172    -16.463      0.000
+    U14$2             -1.336      0.133    -10.073      0.000
+    U14$3              0.074      0.118      0.626      0.531
+    U14$4              1.521      0.141     10.802      0.000
+    U14$5              2.780      0.181     15.401      0.000
+    U14$6              4.480      0.309     14.511      0.000
+    U15$1             -2.378      0.156    -15.216      0.000
+    U15$2             -0.923      0.104     -8.851      0.000
+    U15$3              0.338      0.098      3.460      0.001
+    U15$4              1.677      0.125     13.366      0.000
+    U15$5              2.960      0.201     14.716      0.000
+    U15$6              5.702      0.714      7.987      0.000
+    U16$1             -2.675      0.176    -15.227      0.000
+    U16$2             -2.155      0.149    -14.466      0.000
+    U16$3             -1.934      0.141    -13.734      0.000
+    U16$4             -1.524      0.126    -12.103      0.000
+    U16$5             -0.962      0.113     -8.512      0.000
+    U16$6             -0.634      0.107     -5.933      0.000
+    U16$7              0.025      0.105      0.242      0.809
+    U16$8              1.065      0.115      9.248      0.000
+
+ Variances
+    F                  1.000      0.000    999.000    999.000
+
+Latent Class 2 (0)
+
+ F        BY
+    U1                 0.628      0.111      5.678      0.000
+    U2                 0.740      0.126      5.880      0.000
+    U3                 0.796      0.109      7.288      0.000
+    U4                 1.001      0.149      6.728      0.000
+    U5                 0.816      0.124      6.608      0.000
+    U6                 0.542      0.130      4.166      0.000
+    U7                 0.437      0.114      3.823      0.000
+    U8                 0.460      0.110      4.181      0.000
+    U9                 0.872      0.126      6.934      0.000
+    U10                2.415      1.510      1.599      0.110
+    U11                2.313      1.611      1.436      0.151
+    U12                2.143      1.412      1.518      0.129
+    U13                1.059      0.206      5.146      0.000
+    U14                1.055      0.203      5.195      0.000
+    U15                0.673      0.120      5.629      0.000
+    U16                0.907      0.143      6.358      0.000
+
+ Means
+    F                  0.751      0.216      3.482      0.000
+
+ Thresholds
+    U1$1              -3.632      0.334    -10.881      0.000
+    U1$2              -2.339      0.200    -11.704      0.000
+    U1$3              -0.792      0.133     -5.954      0.000
+    U1$4              -0.099      0.126     -0.786      0.432
+    U1$5               0.746      0.145      5.140      0.000
+    U1$6               1.386      0.161      8.595      0.000
+    U1$7               1.930      0.183     10.562      0.000
+    U1$8               2.988      0.239     12.515      0.000
+    U2$1              -4.074      0.374    -10.884      0.000
+    U2$2              -1.928      0.176    -10.933      0.000
+    U2$3              -0.970      0.139     -6.978      0.000
+    U2$4               0.103      0.127      0.814      0.416
+    U2$5               0.935      0.146      6.396      0.000
+    U2$6               1.678      0.172      9.732      0.000
+    U2$7               2.476      0.208     11.891      0.000
+    U2$8               3.414      0.258     13.256      0.000
+    U2$9               3.914      0.296     13.241      0.000
+    U3$1              -5.507      0.667     -8.252      0.000
+    U3$2              -5.051      0.588     -8.592      0.000
+    U3$3              -2.721      0.241    -11.294      0.000
+    U3$4              -1.250      0.171     -7.320      0.000
+    U3$5              -0.047      0.176     -0.266      0.791
+    U3$6               1.000      0.212      4.707      0.000
+    U3$7               1.841      0.266      6.911      0.000
+    U3$8               2.710      0.325      8.345      0.000
+    U4$1              -3.904      0.372    -10.497      0.000
+    U4$2              -2.776      0.270    -10.294      0.000
+    U4$3              -1.367      0.191     -7.154      0.000
+    U4$4              -0.065      0.200     -0.323      0.747
+    U4$5               1.307      0.308      4.245      0.000
+    U4$6               2.549      0.420      6.066      0.000
+    U4$7               3.991      0.565      7.062      0.000
+    U5$1              -4.503      0.463     -9.724      0.000
+    U5$2              -2.132      0.215     -9.897      0.000
+    U5$3              -0.953      0.165     -5.777      0.000
+    U5$4               0.240      0.180      1.334      0.182
+    U5$5               1.136      0.227      4.994      0.000
+    U5$6               2.041      0.272      7.510      0.000
+    U5$7               3.053      0.314      9.731      0.000
+    U5$8               4.240      0.385     11.017      0.000
+    U6$1              -3.520      0.289    -12.197      0.000
+    U6$2              -2.804      0.222    -12.645      0.000
+    U6$3              -2.523      0.202    -12.515      0.000
+    U6$4              -1.762      0.162    -10.890      0.000
+    U6$5              -0.754      0.135     -5.603      0.000
+    U6$6              -0.279      0.134     -2.080      0.038
+    U6$7               0.950      0.149      6.378      0.000
+    U6$8               1.701      0.169     10.039      0.000
+    U7$1              -4.121      0.437     -9.420      0.000
+    U7$2              -2.641      0.241    -10.947      0.000
+    U7$3              -1.825      0.183     -9.980      0.000
+    U7$4              -0.313      0.142     -2.198      0.028
+    U7$5               1.876      0.206      9.125      0.000
+    U8$1              -2.728      0.249    -10.952      0.000
+    U8$2              -1.992      0.186    -10.726      0.000
+    U8$3              -0.801      0.151     -5.301      0.000
+    U8$4               0.444      0.142      3.129      0.002
+    U9$1              -5.149      0.608     -8.464      0.000
+    U9$2              -3.179      0.319     -9.962      0.000
+    U9$3              -1.249      0.176     -7.112      0.000
+    U9$4               0.310      0.189      1.642      0.101
+    U9$5               1.583      0.257      6.159      0.000
+    U9$6               2.846      0.344      8.276      0.000
+    U10$1             -8.037      1.920     -4.185      0.000
+    U10$2             -5.348      1.137     -4.703      0.000
+    U10$3             -2.321      0.512     -4.530      0.000
+    U10$4              0.290      0.528      0.549      0.583
+    U10$5              2.983      1.141      2.615      0.009
+    U10$6              5.791      1.882      3.077      0.002
+    U10$7              9.232      2.660      3.471      0.001
+    U11$1             -7.450      1.854     -4.019      0.000
+    U11$2             -6.661      1.706     -3.904      0.000
+    U11$3             -4.715      1.117     -4.220      0.000
+    U11$4             -2.508      0.552     -4.542      0.000
+    U11$5             -1.375      0.392     -3.504      0.000
+    U11$6              0.561      0.660      0.851      0.395
+    U11$7              2.123      1.088      1.951      0.051
+    U11$8              4.318      1.749      2.469      0.014
+    U12$1             -8.213      2.147     -3.826      0.000
+    U12$2             -7.201      1.676     -4.296      0.000
+    U12$3             -4.967      0.970     -5.122      0.000
+    U12$4             -2.663      0.523     -5.088      0.000
+    U12$5             -1.689      0.401     -4.212      0.000
+    U12$6             -0.123      0.449     -0.275      0.783
+    U12$7              1.764      0.895      1.972      0.049
+    U12$8              3.545      1.362      2.603      0.009
+    U13$1             -3.574      0.370     -9.656      0.000
+    U13$2             -2.380      0.262     -9.070      0.000
+    U13$3             -1.430      0.218     -6.565      0.000
+    U13$4             -0.809      0.191     -4.230      0.000
+    U13$5             -0.161      0.180     -0.898      0.369
+    U13$6              0.931      0.180      5.169      0.000
+    U13$7              1.599      0.193      8.286      0.000
+    U13$8              2.828      0.245     11.550      0.000
+    U14$1             -3.820      0.391     -9.758      0.000
+    U14$2             -2.098      0.252     -8.324      0.000
+    U14$3             -0.524      0.204     -2.562      0.010
+    U14$4              0.752      0.204      3.684      0.000
+    U14$5              2.233      0.254      8.806      0.000
+    U14$6              3.632      0.325     11.174      0.000
+    U15$1             -2.240      0.195    -11.515      0.000
+    U15$2             -0.761      0.152     -5.001      0.000
+    U15$3              0.456      0.163      2.798      0.005
+    U15$4              1.994      0.208      9.572      0.000
+    U15$5              3.102      0.251     12.367      0.000
+    U15$6              4.533      0.353     12.827      0.000
+    U16$1             -2.669      0.250    -10.682      0.000
+    U16$2             -2.307      0.233     -9.887      0.000
+    U16$3             -1.720      0.208     -8.269      0.000
+    U16$4             -1.413      0.197     -7.165      0.000
+    U16$5             -0.802      0.179     -4.478      0.000
+    U16$6             -0.603      0.175     -3.454      0.001
+    U16$7              0.267      0.170      1.567      0.117
+    U16$8              1.489      0.197      7.549      0.000
+
+ Variances
+    F                  1.740      1.057      1.646      0.100
+
+Categorical Latent Variables
+
+ Means
+    D#1                0.119      0.065      1.841      0.066
+
+
+
+APPROXIMATE MEASUREMENT INVARIANCE (NONINVARIANCE) FOR GROUPS
+
+ Intercepts/Thresholds
+   U1$1        1 0
+   U1$2        1 0
+   U1$3        1 0
+   U1$4        1 0
+   U1$5        1 0
+   U1$6        1 0
+   U1$7        1 0
+   U1$8        1 0
+   U2$1        1 0
+   U2$2        1 0
+   U2$3        1 0
+   U2$4        1 0
+   U2$5        1 0
+   U2$6        1 0
+   U2$7        1 0
+   U2$8        1 0
+   U2$9        1 0
+   U3$1        1 0
+   U3$2        (1) (0)
+   U3$3        (1) (0)
+   U3$4        (1) (0)
+   U3$5        1 0
+   U3$6        1 0
+   U3$7        1 0
+   U3$8        1 0
+   U4$1        1 0
+   U4$2        1 0
+   U4$3        1 0
+   U4$4        1 0
+   U4$5        1 0
+   U4$6        1 0
+   U4$7        1 0
+   U5$1        1 0
+   U5$2        1 0
+   U5$3        1 0
+   U5$4        1 0
+   U5$5        1 0
+   U5$6        1 0
+   U5$7        1 0
+   U5$8        1 0
+   U6$1        1 0
+   U6$2        1 0
+   U6$3        1 0
+   U6$4        1 0
+   U6$5        (1) (0)
+   U6$6        1 0
+   U6$7        1 0
+   U6$8        1 0
+   U7$1        1 0
+   U7$2        1 0
+   U7$3        1 0
+   U7$4        1 0
+   U7$5        1 0
+   U8$1        1 0
+   U8$2        1 0
+   U8$3        1 0
+   U8$4        1 0
+   U9$1        1 0
+   U9$2        (1) (0)
+   U9$3        (1) (0)
+   U9$4        (1) (0)
+   U9$5        (1) (0)
+   U9$6        1 0
+   U10$1       1 0
+   U10$2       1 0
+   U10$3       1 0
+   U10$4       1 0
+   U10$5       1 0
+   U10$6       1 0
+   U10$7       1 0
+   U11$1       1 0
+   U11$2       1 0
+   U11$3       1 0
+   U11$4       1 0
+   U11$5       1 0
+   U11$6       1 0
+   U11$7       1 0
+   U11$8       1 0
+   U12$1       1 0
+   U12$2       1 0
+   U12$3       1 0
+   U12$4       1 0
+   U12$5       1 0
+   U12$6       1 0
+   U12$7       1 0
+   U12$8       1 0
+   U13$1       1 0
+   U13$2       1 0
+   U13$3       1 0
+   U13$4       1 0
+   U13$5       1 0
+   U13$6       1 0
+   U13$7       1 0
+   U13$8       1 0
+   U14$1       1 0
+   U14$2       1 0
+   U14$3       1 0
+   U14$4       (1) (0)
+   U14$5       1 0
+   U14$6       1 0
+   U15$1       1 0
+   U15$2       1 0
+   U15$3       1 0
+   U15$4       1 0
+   U15$5       1 0
+   U15$6       1 0
+   U16$1       1 0
+   U16$2       1 0
+   U16$3       1 0
+   U16$4       1 0
+   U16$5       1 0
+   U16$6       1 0
+   U16$7       1 0
+   U16$8       1 0
+
+ Loadings for F
+   U1          1 0
+   U2          1 0
+   U3          1 0
+   U4          1 0
+   U5          1 0
+   U6          1 0
+   U7          1 0
+   U8          1 0
+   U9          1 0
+   U10         1 0
+   U11         1 0
+   U12         1 0
+   U13         1 0
+   U14         1 0
+   U15         1 0
+   U16         1 0
+
+
+FACTOR MEAN COMPARISON AT THE 5% SIGNIFICANCE LEVEL IN DESCENDING ORDER
+
+ Results for Factor F
+
+           Latent    Group      Factor
+ Ranking    Class    Value       Mean     Groups With Significantly Smaller Factor Mean
+     1         2         0       0.751    1
+     2         1         1       0.000
+
+
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.121E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+ALIGNMENT OUTPUT
+
+INVARIANCE ANALYSIS
+
+ Intercepts/Thresholds
+ Threshold U1$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.632     -3.218     -0.414      0.401      0.301
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.413
+ R-square/Explained variance/Invariance index:       0.679
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.218      0.195      0.188      0.301
+     0     -3.632     -0.219      0.212      0.301
+
+ Threshold U1$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.339     -1.928     -0.411      0.234      0.078
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.121
+ R-square/Explained variance/Invariance index:       0.681
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.928      0.193      0.110      0.078
+     0     -2.339     -0.218      0.124      0.078
+
+ Threshold U1$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.792     -0.697     -0.095      0.153      0.535
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.741
+ R-square/Explained variance/Invariance index:       0.897
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.697      0.045      0.072      0.535
+     0     -0.792     -0.050      0.081      0.535
+
+ Threshold U1$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.099     -0.148      0.049      0.143      0.731
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.125
+ R-square/Explained variance/Invariance index:       0.992
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.148     -0.023      0.067      0.731
+     0     -0.099      0.026      0.076      0.731
+
+ Threshold U1$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.746      0.651      0.095      0.159      0.551
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.696
+ R-square/Explained variance/Invariance index:       1.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.651     -0.045      0.075      0.551
+     0      0.746      0.050      0.084      0.551
+
+ Threshold U1$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.386      1.337      0.049      0.179      0.784
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.360
+ R-square/Explained variance/Invariance index:       0.992
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.337     -0.023      0.084      0.784
+     0      1.386      0.026      0.095      0.784
+
+ Threshold U1$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.930      2.052     -0.123      0.217      0.573
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.994
+ R-square/Explained variance/Invariance index:       0.875
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.052      0.058      0.102      0.573
+     0      1.930     -0.065      0.115      0.573
+
+ Threshold U1$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.988      2.876      0.111      0.299      0.709
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.929
+ R-square/Explained variance/Invariance index:       0.996
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.876     -0.052      0.140      0.709
+     0      2.988      0.059      0.158      0.709
+
+ Threshold U2$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -4.074     -3.588     -0.486      0.439      0.268
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.816
+ R-square/Explained variance/Invariance index:       0.764
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.588      0.229      0.206      0.268
+     0     -4.074     -0.258      0.232      0.268
+
+ Threshold U2$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.928     -2.002      0.074      0.207      0.722
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.967
+ R-square/Explained variance/Invariance index:       0.988
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.002     -0.035      0.097      0.722
+     0     -1.928      0.039      0.110      0.722
+
+ Threshold U2$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.970     -0.988      0.018      0.153      0.904
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.979
+ R-square/Explained variance/Invariance index:       1.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.988     -0.009      0.072      0.904
+     0     -0.970      0.010      0.081      0.904
+
+ Threshold U2$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.103      0.041      0.062      0.134      0.644
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.071
+ R-square/Explained variance/Invariance index:       0.993
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.041     -0.029      0.063      0.644
+     0      0.103      0.033      0.071      0.644
+
+ Threshold U2$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.935      0.860      0.075      0.155      0.630
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.895
+ R-square/Explained variance/Invariance index:       0.987
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.860     -0.035      0.073      0.630
+     0      0.935      0.040      0.082      0.630
+
+ Threshold U2$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.678      1.639      0.039      0.187      0.834
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.657
+ R-square/Explained variance/Invariance index:       0.999
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.639     -0.018      0.088      0.834
+     0      1.678      0.021      0.099      0.834
+
+ Threshold U2$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.476      2.315      0.161      0.234      0.491
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.391
+ R-square/Explained variance/Invariance index:       0.872
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.315     -0.076      0.110      0.491
+     0      2.476      0.085      0.124      0.491
+
+ Threshold U2$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.414      2.950      0.465      0.299      0.120
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.168
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.950     -0.219      0.141      0.120
+     0      3.414      0.246      0.159      0.120
+
+ Threshold U2$9
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.914     -3.886     -0.028      0.383      0.942
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.899
+ R-square/Explained variance/Invariance index:       1.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.886      0.013      0.180      0.942
+     0     -3.914     -0.015      0.203      0.942
+
+ Threshold U3$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      5.507      4.216      1.290      0.729      0.077
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       4.823
+ R-square/Explained variance/Invariance index:       0.533
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.216     -0.607      0.343      0.077
+     0      5.507      0.684      0.386      0.077
+
+ Threshold U3$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      5.051      3.025      2.026      0.614      0.001
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U3$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.721      1.813      0.908      0.269      0.001
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U3$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.250      0.618      0.632      0.189      0.001
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U3$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.047     -0.441      0.488      0.192      0.011
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.212
+ R-square/Explained variance/Invariance index:       0.798
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.441     -0.229      0.090      0.011
+     0      0.047      0.258      0.102      0.011
+
+ Threshold U3$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.000     -1.398      0.398      0.234      0.089
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.211
+ R-square/Explained variance/Invariance index:       0.841
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.398     -0.187      0.110      0.089
+     0     -1.000      0.211      0.124      0.089
+
+ Threshold U3$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.841     -2.528      0.687      0.307      0.025
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.205
+ R-square/Explained variance/Invariance index:       0.714
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.528     -0.323      0.144      0.025
+     0     -1.841      0.364      0.162      0.025
+
+ Threshold U3$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.710     -3.690      0.980      0.409      0.016
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.229
+ R-square/Explained variance/Invariance index:       0.614
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.690     -0.461      0.192      0.016
+     0     -2.710      0.519      0.216      0.016
+
+ Threshold U4$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.904      3.908     -0.004      0.424      0.992
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.906
+ R-square/Explained variance/Invariance index:       0.998
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.908      0.002      0.199      0.992
+     0      3.904     -0.002      0.225      0.992
+
+ Threshold U4$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.776      2.425      0.351      0.298      0.239
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.590
+ R-square/Explained variance/Invariance index:       0.874
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.425     -0.165      0.140      0.239
+     0      2.776      0.186      0.158      0.239
+
+ Threshold U4$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.367      0.995      0.371      0.205      0.070
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.170
+ R-square/Explained variance/Invariance index:       0.866
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.995     -0.175      0.096      0.070
+     0      1.367      0.197      0.108      0.070
+
+ Threshold U4$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.065     -0.413      0.477      0.211      0.024
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.188
+ R-square/Explained variance/Invariance index:       0.823
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.413     -0.224      0.099      0.024
+     0      0.065      0.253      0.112      0.024
+
+ Threshold U4$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.307     -1.725      0.417      0.328      0.203
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.528
+ R-square/Explained variance/Invariance index:       0.847
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.725     -0.196      0.154      0.203
+     0     -1.307      0.221      0.174      0.203
+
+ Threshold U4$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.549     -3.394      0.844      0.465      0.069
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.997
+ R-square/Explained variance/Invariance index:       0.693
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.394     -0.397      0.219      0.069
+     0     -2.549      0.447      0.246      0.069
+
+ Threshold U4$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.991     -5.179      1.188      0.751      0.114
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -4.620
+ R-square/Explained variance/Invariance index:       0.599
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -5.179     -0.558      0.353      0.114
+     0     -3.991      0.629      0.398      0.114
+
+ Threshold U5$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      4.503      3.539      0.964      0.523      0.065
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.993
+ R-square/Explained variance/Invariance index:       0.568
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.539     -0.453      0.246      0.065
+     0      4.503      0.511      0.277      0.065
+
+ Threshold U5$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.132      1.968      0.165      0.244      0.501
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.045
+ R-square/Explained variance/Invariance index:       0.907
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.968     -0.077      0.115      0.501
+     0      2.132      0.087      0.129      0.501
+
+ Threshold U5$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.953      0.728      0.225      0.185      0.225
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.834
+ R-square/Explained variance/Invariance index:       0.874
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.728     -0.106      0.087      0.225
+     0      0.953      0.119      0.098      0.225
+
+ Threshold U5$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.240     -0.423      0.183      0.197      0.352
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.337
+ R-square/Explained variance/Invariance index:       0.897
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.423     -0.086      0.092      0.352
+     0     -0.240      0.097      0.104      0.352
+
+ Threshold U5$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.136     -1.292      0.156      0.247      0.527
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.219
+ R-square/Explained variance/Invariance index:       0.912
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.292     -0.074      0.116      0.527
+     0     -1.136      0.083      0.131      0.527
+
+ Threshold U5$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.041     -2.210      0.169      0.302      0.576
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.130
+ R-square/Explained variance/Invariance index:       0.905
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.210     -0.079      0.142      0.576
+     0     -2.041      0.089      0.160      0.576
+
+ Threshold U5$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.053     -2.925     -0.128      0.360      0.721
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.985
+ R-square/Explained variance/Invariance index:       0.987
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.925      0.060      0.169      0.721
+     0     -3.053     -0.068      0.191      0.721
+
+ Threshold U5$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -4.240     -3.627     -0.613      0.455      0.178
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.915
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.627      0.288      0.214      0.178
+     0     -4.240     -0.325      0.241      0.178
+
+ Threshold U6$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.520      4.251     -0.731      0.419      0.081
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.907
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.251      0.344      0.197      0.081
+     0      3.520     -0.387      0.222      0.081
+
+ Threshold U6$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.804      3.368     -0.564      0.308      0.067
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.103
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.368      0.265      0.145      0.067
+     0      2.804     -0.299      0.163      0.067
+
+ Threshold U6$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.523      3.019     -0.497      0.276      0.072
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.786
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.019      0.234      0.130      0.072
+     0      2.523     -0.263      0.146      0.072
+
+ Threshold U6$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.762      2.159     -0.397      0.210      0.058
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.972
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.159      0.187      0.099      0.058
+     0      1.762     -0.210      0.111      0.058
+
+ Threshold U6$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.754      1.343     -0.589      0.168      0.000
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U6$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.279      0.796     -0.517      0.161      0.001
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.553
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.796      0.243      0.076      0.001
+     0      0.279     -0.274      0.085      0.001
+
+ Threshold U6$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.950     -0.518     -0.433      0.174      0.013
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.721
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.518      0.203      0.082      0.013
+     0     -0.950     -0.229      0.092      0.013
+
+ Threshold U6$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.701     -1.258     -0.443      0.200      0.027
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.466
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.258      0.208      0.094      0.027
+     0     -1.701     -0.235      0.106      0.027
+
+ Threshold U7$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      4.121      3.584      0.537      0.499      0.282
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.836
+ R-square/Explained variance/Invariance index:       0.709
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.584     -0.252      0.235      0.282
+     0      4.121      0.284      0.264      0.282
+
+ Threshold U7$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.641      2.846     -0.205      0.298      0.492
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.749
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.846      0.096      0.140      0.492
+     0      2.641     -0.109      0.158      0.492
+
+ Threshold U7$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.825      1.625      0.199      0.217      0.358
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.719
+ R-square/Explained variance/Invariance index:       0.940
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.625     -0.094      0.102      0.358
+     0      1.825      0.106      0.115      0.358
+
+ Threshold U7$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.313      0.398     -0.085      0.170      0.617
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.358
+ R-square/Explained variance/Invariance index:       0.591
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.398      0.040      0.080      0.617
+     0      0.313     -0.045      0.090      0.617
+
+ Threshold U7$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.876     -1.780     -0.096      0.240      0.689
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.825
+ R-square/Explained variance/Invariance index:       0.486
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.780      0.045      0.113      0.689
+     0     -1.876     -0.051      0.127      0.689
+
+ Threshold U8$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.728      3.284     -0.556      0.325      0.087
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.023
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.284      0.262      0.153      0.087
+     0      2.728     -0.295      0.172      0.087
+
+ Threshold U8$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.992      2.208     -0.215      0.233      0.356
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.106
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.208      0.101      0.110      0.356
+     0      1.992     -0.114      0.124      0.356
+
+ Threshold U8$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.801      0.942     -0.141      0.181      0.434
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.876
+ R-square/Explained variance/Invariance index:       0.039
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.942      0.066      0.085      0.434
+     0      0.801     -0.075      0.096      0.434
+
+ Threshold U8$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.444     -0.307     -0.137      0.167      0.412
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.372
+ R-square/Explained variance/Invariance index:       0.116
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.307      0.064      0.079      0.412
+     0     -0.444     -0.073      0.089      0.412
+
+ Threshold U9$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      5.149      4.090      1.059      0.673      0.116
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       4.588
+ R-square/Explained variance/Invariance index:       0.634
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.090     -0.498      0.317      0.116
+     0      5.149      0.561      0.357      0.116
+
+ Threshold U9$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.179      1.707      1.472      0.337      0.000
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U9$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.249      0.207      1.042      0.194      0.000
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U9$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.310     -1.261      0.951      0.212      0.000
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U9$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.583     -2.684      1.102      0.303      0.000
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U9$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.846     -4.123      1.277      0.452      0.005
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.523
+ R-square/Explained variance/Invariance index:       0.578
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -4.123     -0.600      0.212      0.005
+     0     -2.846      0.677      0.239      0.005
+
+ Threshold U10$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      8.037      9.314     -1.277      2.034      0.530
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       8.713
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      9.314      0.600      0.956      0.530
+     0      8.037     -0.676      1.078      0.530
+
+ Threshold U10$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      5.348      5.526     -0.178      1.197      0.882
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       5.442
+ R-square/Explained variance/Invariance index:       0.562
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      5.526      0.084      0.563      0.882
+     0      5.348     -0.094      0.634      0.882
+
+ Threshold U10$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.321      2.603     -0.282      0.559      0.614
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.470
+ R-square/Explained variance/Invariance index:       0.400
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.603      0.133      0.263      0.614
+     0      2.321     -0.150      0.296      0.614
+
+ Threshold U10$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.290     -0.596      0.306      0.557      0.583
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.452
+ R-square/Explained variance/Invariance index:       0.920
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.596     -0.144      0.262      0.583
+     0     -0.290      0.162      0.295      0.583
+
+ Threshold U10$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.983     -4.209      1.226      1.193      0.304
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.632
+ R-square/Explained variance/Invariance index:       0.989
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -4.209     -0.576      0.561      0.304
+     0     -2.983      0.649      0.632      0.304
+
+ Threshold U10$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -5.791     -7.304      1.513      1.958      0.440
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -6.593
+ R-square/Explained variance/Invariance index:       0.966
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -7.304     -0.711      0.921      0.440
+     0     -5.791      0.802      1.037      0.440
+
+ Threshold U10$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -9.232    -10.504      1.272      2.811      0.651
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -9.905
+ R-square/Explained variance/Invariance index:       0.986
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1    -10.504     -0.598      1.322      0.651
+     0     -9.232      0.674      1.489      0.651
+
+ Threshold U11$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      7.450     10.482     -3.032      2.128      0.154
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       9.057
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     10.482      1.426      1.001      0.154
+     0      7.450     -1.606      1.128      0.154
+
+ Threshold U11$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      6.661      8.017     -1.356      1.857      0.465
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       7.379
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      8.017      0.637      0.873      0.465
+     0      6.661     -0.718      0.984      0.465
+
+ Threshold U11$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      4.715      5.754     -1.039      1.239      0.402
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       5.265
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      5.754      0.488      0.582      0.402
+     0      4.715     -0.550      0.656      0.402
+
+ Threshold U11$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.508      3.139     -0.631      0.647      0.329
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.842
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.139      0.297      0.304      0.329
+     0      2.508     -0.334      0.343      0.329
+
+ Threshold U11$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.375      1.830     -0.455      0.460      0.323
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.616
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.830      0.214      0.216      0.323
+     0      1.375     -0.241      0.244      0.323
+
+ Threshold U11$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.561     -0.742      0.180      0.683      0.792
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.657
+ R-square/Explained variance/Invariance index:       0.845
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.742     -0.085      0.321      0.792
+     0     -0.561      0.096      0.362      0.792
+
+ Threshold U11$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.123     -3.570      1.448      1.131      0.200
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.890
+ R-square/Explained variance/Invariance index:       0.974
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -3.570     -0.681      0.532      0.200
+     0     -2.123      0.767      0.599      0.200
+
+ Threshold U11$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -4.318     -6.469      2.151      1.825      0.238
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -5.458
+ R-square/Explained variance/Invariance index:       0.902
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -6.469     -1.012      0.858      0.238
+     0     -4.318      1.140      0.967      0.238
+
+ Threshold U12$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      8.213     10.747     -2.534      2.388      0.289
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       9.556
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     10.747      1.192      1.123      0.289
+     0      8.213     -1.342      1.265      0.289
+
+ Threshold U12$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      7.201      8.946     -1.745      1.853      0.347
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       8.125
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      8.946      0.820      0.871      0.347
+     0      7.201     -0.924      0.982      0.347
+
+ Threshold U12$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      4.967      6.432     -1.465      1.121      0.191
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       5.743
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      6.432      0.689      0.527      0.191
+     0      4.967     -0.776      0.594      0.191
+
+ Threshold U12$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.663      4.027     -1.365      0.660      0.039
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.386
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.027      0.642      0.311      0.039
+     0      2.663     -0.723      0.350      0.039
+
+ Threshold U12$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.689      2.725     -1.036      0.510      0.042
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.238
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.725      0.487      0.240      0.042
+     0      1.689     -0.549      0.270      0.042
+
+ Threshold U12$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.123     -0.145      0.268      0.491      0.585
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.019
+ R-square/Explained variance/Invariance index:       0.788
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.145     -0.126      0.231      0.585
+     0      0.123      0.142      0.260      0.585
+
+ Threshold U12$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.764     -2.647      0.883      0.941      0.348
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.232
+ R-square/Explained variance/Invariance index:       0.990
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.647     -0.415      0.442      0.348
+     0     -1.764      0.468      0.498      0.348
+
+ Threshold U12$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.545     -5.995      2.450      1.449      0.091
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -4.843
+ R-square/Explained variance/Invariance index:       0.895
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -5.995     -1.152      0.681      0.091
+     0     -3.545      1.298      0.767      0.091
+
+ Threshold U13$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.574      3.250      0.324      0.424      0.445
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.402
+ R-square/Explained variance/Invariance index:       0.857
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      3.250     -0.152      0.199      0.445
+     0      3.574      0.171      0.224      0.445
+
+ Threshold U13$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.380      2.252      0.128      0.291      0.660
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.312
+ R-square/Explained variance/Invariance index:       0.939
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.252     -0.060      0.137      0.660
+     0      2.380      0.068      0.154      0.660
+
+ Threshold U13$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.430      1.219      0.211      0.229      0.358
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.318
+ R-square/Explained variance/Invariance index:       0.905
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.219     -0.099      0.108      0.358
+     0      1.430      0.112      0.122      0.358
+
+ Threshold U13$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.809      0.625      0.184      0.200      0.358
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.712
+ R-square/Explained variance/Invariance index:       0.916
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.625     -0.086      0.094      0.358
+     0      0.809      0.097      0.106      0.358
+
+ Threshold U13$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.161      0.071      0.090      0.185      0.627
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.113
+ R-square/Explained variance/Invariance index:       0.954
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.071     -0.042      0.087      0.627
+     0      0.161      0.048      0.098      0.627
+
+ Threshold U13$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.931     -0.875     -0.056      0.181      0.758
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.902
+ R-square/Explained variance/Invariance index:       0.997
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.875      0.026      0.085      0.758
+     0     -0.931     -0.030      0.096      0.758
+
+ Threshold U13$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.599     -1.580     -0.019      0.198      0.922
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.589
+ R-square/Explained variance/Invariance index:       0.989
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.580      0.009      0.093      0.922
+     0     -1.599     -0.010      0.105      0.922
+
+ Threshold U13$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.828     -2.893      0.065      0.278      0.815
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.862
+ R-square/Explained variance/Invariance index:       0.963
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.893     -0.031      0.131      0.815
+     0     -2.828      0.034      0.147      0.815
+
+ Threshold U14$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      3.820      2.824      0.996      0.414      0.016
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.292
+ R-square/Explained variance/Invariance index:       0.760
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.824     -0.468      0.195      0.016
+     0      3.820      0.528      0.219      0.016
+
+ Threshold U14$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.098      1.336      0.762      0.271      0.005
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.695
+ R-square/Explained variance/Invariance index:       0.830
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.336     -0.358      0.128      0.005
+     0      2.098      0.404      0.144      0.005
+
+ Threshold U14$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.524     -0.074      0.598      0.218      0.006
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.207
+ R-square/Explained variance/Invariance index:       0.882
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.074     -0.281      0.102      0.006
+     0      0.524      0.317      0.115      0.006
+
+ Threshold U14$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.752     -1.521      0.769      0.232      0.001
+ Approximate Invariance Was Not Found For This Parameter.
+
+ Threshold U14$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -2.233     -2.780      0.548      0.296      0.064
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -2.523
+ R-square/Explained variance/Invariance index:       0.898
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.780     -0.258      0.139      0.064
+     0     -2.233      0.290      0.157      0.064
+
+ Threshold U14$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.632     -4.480      0.848      0.439      0.053
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -4.082
+ R-square/Explained variance/Invariance index:       0.803
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -4.480     -0.399      0.207      0.053
+     0     -3.632      0.449      0.233      0.053
+
+ Threshold U15$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.240      2.378     -0.138      0.243      0.570
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.313
+ R-square/Explained variance/Invariance index:       0.907
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.378      0.065      0.114      0.570
+     0      2.240     -0.073      0.129      0.570
+
+ Threshold U15$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.761      0.923     -0.162      0.177      0.360
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.847
+ R-square/Explained variance/Invariance index:       0.843
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.923      0.076      0.083      0.360
+     0      0.761     -0.086      0.094      0.360
+
+ Threshold U15$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.456     -0.338     -0.119      0.181      0.514
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.393
+ R-square/Explained variance/Invariance index:       0.943
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.338      0.056      0.085      0.514
+     0     -0.456     -0.063      0.096      0.514
+
+ Threshold U15$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.994     -1.677     -0.317      0.237      0.181
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.826
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.677      0.149      0.111      0.181
+     0     -1.994     -0.168      0.125      0.181
+
+ Threshold U15$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -3.102     -2.960     -0.142      0.317      0.653
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -3.027
+ R-square/Explained variance/Invariance index:       0.897
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -2.960      0.067      0.149      0.653
+     0     -3.102     -0.075      0.168      0.653
+
+ Threshold U15$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -4.533     -5.702      1.169      0.795      0.142
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -5.152
+ R-square/Explained variance/Invariance index:       0.491
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -5.702     -0.549      0.374      0.142
+     0     -4.533      0.619      0.421      0.142
+
+ Threshold U16$1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.669      2.675     -0.006      0.285      0.982
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.672
+ R-square/Explained variance/Invariance index:       1.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.675      0.003      0.134      0.982
+     0      2.669     -0.003      0.151      0.982
+
+ Threshold U16$2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.307      2.155      0.152      0.258      0.556
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       2.227
+ R-square/Explained variance/Invariance index:       0.969
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      2.155     -0.071      0.121      0.556
+     0      2.307      0.080      0.136      0.556
+
+ Threshold U16$3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.720      1.934     -0.215      0.230      0.351
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.833
+ R-square/Explained variance/Invariance index:       0.779
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.934      0.101      0.108      0.351
+     0      1.720     -0.114      0.122      0.351
+
+ Threshold U16$4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.413      1.524     -0.111      0.214      0.606
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.472
+ R-square/Explained variance/Invariance index:       0.959
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.524      0.052      0.101      0.606
+     0      1.413     -0.059      0.114      0.606
+
+ Threshold U16$5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.802      0.962     -0.161      0.191      0.400
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.887
+ R-square/Explained variance/Invariance index:       0.899
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.962      0.076      0.090      0.400
+     0      0.802     -0.085      0.101      0.400
+
+ Threshold U16$6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.603      0.634     -0.031      0.183      0.866
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.620
+ R-square/Explained variance/Invariance index:       0.997
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.634      0.015      0.086      0.866
+     0      0.603     -0.016      0.097      0.866
+
+ Threshold U16$7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -0.267     -0.025     -0.242      0.182      0.184
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -0.139
+ R-square/Explained variance/Invariance index:       0.686
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -0.025      0.114      0.086      0.184
+     0     -0.267     -0.128      0.096      0.184
+
+ Threshold U16$8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1     -1.489     -1.065     -0.424      0.213      0.047
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:      -1.265
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1     -1.065      0.199      0.100      0.047
+     0     -1.489     -0.225      0.113      0.047
+
+
+
+ Loadings
+ Loadings for U1
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.628      0.395      0.233      0.122      0.055
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.505
+ R-square/Explained variance/Invariance index:       0.611
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.395     -0.110      0.057      0.055
+     0      0.628      0.124      0.064      0.055
+
+ Loadings for U2
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.740      0.687      0.053      0.124      0.669
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.712
+ R-square/Explained variance/Invariance index:       0.955
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.687     -0.025      0.058      0.669
+     0      0.740      0.028      0.066      0.669
+
+ Loadings for U3
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.796      0.797     -0.001      0.079      0.989
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.797
+ R-square/Explained variance/Invariance index:       1.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.797      0.001      0.037      0.989
+     0      0.796     -0.001      0.042      0.989
+
+ Loadings for U4
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.001      0.895      0.106      0.124      0.392
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.945
+ R-square/Explained variance/Invariance index:       0.917
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.895     -0.050      0.058      0.392
+     0      1.001      0.056      0.066      0.392
+
+ Loadings for U5
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.816      0.623      0.193      0.117      0.099
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.714
+ R-square/Explained variance/Invariance index:       0.757
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.623     -0.091      0.055      0.099
+     0      0.816      0.102      0.062      0.099
+
+ Loadings for U6
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.542      0.826     -0.284      0.145      0.050
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.692
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.826      0.133      0.068      0.050
+     0      0.542     -0.150      0.077      0.050
+
+ Loadings for U7
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.437      0.623     -0.187      0.143      0.193
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.535
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.623      0.088      0.067      0.193
+     0      0.437     -0.099      0.076      0.193
+
+ Loadings for U8
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.460      0.616     -0.156      0.143      0.274
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.542
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.616      0.073      0.067      0.274
+     0      0.460     -0.083      0.076      0.274
+
+ Loadings for U9
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.872      0.931     -0.060      0.110      0.588
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.903
+ R-square/Explained variance/Invariance index:       0.900
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.931      0.028      0.052      0.588
+     0      0.872     -0.032      0.058      0.588
+
+ Loadings for U10
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.415      4.823     -2.408      1.556      0.122
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.690
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.823      1.132      0.732      0.122
+     0      2.415     -1.276      0.824      0.122
+
+ Loadings for U11
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.313      4.804     -2.491      1.687      0.140
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.633
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      4.804      1.171      0.793      0.140
+     0      2.313     -1.320      0.894      0.140
+
+ Loadings for U12
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      2.143      5.161     -3.018      1.511      0.046
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       3.742
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      5.161      1.419      0.710      0.046
+     0      2.143     -1.599      0.800      0.046
+
+ Loadings for U13
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.059      0.794      0.265      0.201      0.187
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.919
+ R-square/Explained variance/Invariance index:       0.740
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.794     -0.125      0.095      0.187
+     0      1.059      0.140      0.107      0.187
+
+ Loadings for U14
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      1.055      1.376     -0.321      0.202      0.112
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       1.225
+ R-square/Explained variance/Invariance index:       0.000
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      1.376      0.151      0.095      0.112
+     0      1.055     -0.170      0.107      0.112
+
+ Loadings for U15
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.673      0.604      0.069      0.131      0.600
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.637
+ R-square/Explained variance/Invariance index:       0.921
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.604     -0.032      0.062      0.600
+     0      0.673      0.036      0.069      0.600
+
+ Loadings for U16
+ Group     Group      Value      Value     Difference  SE       P-value
+     0         1      0.907      0.919     -0.012      0.123      0.924
+ Approximate Measurement Invariance Holds For Groups:
+ 1 0
+ Weighted Average Value Across Invariant Groups:       0.913
+ R-square/Explained variance/Invariance index:       0.998
+
+ Invariant Group Values, Difference to Average and Significance
+ Group      Value Difference         SE    P-value
+     1      0.919      0.006      0.058      0.924
+     0      0.907     -0.006      0.065      0.924
+
+ Average Invariance index:       0.613
+
+
+     Beginning Time:  09:08:17
+        Ending Time:  09:08:21
+       Elapsed Time:  00:00:04
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2018 Muthen & Muthen
+.    }
+
+.    
+.    
+. mat est  = r(estimate)
+
+.  
+. 
+. 
+. log close 
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\IRT_model_hearing.log
+  log type:  text
+ closed on:   6 Nov 2018, 09:08:23
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

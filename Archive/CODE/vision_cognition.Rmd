@@ -1,0 +1,81 @@
+---
+title: "vision_cognition_BLSA"
+author: "Simo"
+date: "August 24, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r open and merge dataset }
+library(haven)
+vision_demo_allvisits2018 <- read_sas("C:/Users/sdu7/Box Sync/R21_SENSE-MATTERS/DIFVH/POSTED/DATA/SOURCE/vision_demo_allvisits2018.sas7bdat", 
+    NULL)
+```
+
+
+
+```{dataset exploration }
+
+
+
+
+```
+
+```{r box graphs for cogntiive scores }
+
+```
+
+```{r Boxplots of Thresholds}
+ggplot(data = l.hne %>% 
+         mutate(ear = factor(ear, levels = c("r", "l"),
+                             labels = c("Right", "Left"))) %>%
+         rename(Ear = ear) ,
+       aes(y = threshold,
+           x = factor(frequency),
+           color = Ear)) +
+  geom_violin(fill = NA,
+              position = position_dodge(width = 1)) +
+  geom_boxplot(fill = NA,
+               position = position_dodge(width = 1)) +
+  ylab("Threshold (dB HL)") +
+          xlab("Frequency (Hz)") +
+  coord_cartesian(ylim = c(125, -10)) +
+          scale_y_reverse(breaks = seq(120, -10, -10)) +
+  theme_bw() + 
+  theme(legend.position = "bottom")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

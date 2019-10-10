@@ -1,0 +1,92 @@
+\documentclass[11pt,letterpaper]{report}
+%\documentclass[11pt]{article} % use for sj article
+\usepackage{parskip} % to put white space between paragraphs
+\setlength{\parskip}{.25cm} % added 28NOV2012
+\usepackage{paralist} % added 28NOV2012
+\usepackage{stata}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage[makeroom]{cancel}
+\newcolumntype{d}[1]{D{.}{\cdot}{#1}} % http://www.cse.ohio-state.edu/~hank/latex/example.pdf
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{,}{D{,}{,}{2}}
+\usepackage{bm}
+\usepackage{fullpage}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\def\R2Lurl#1#2{\mbox{\href{#1}{\tt #2}}}
+%\usepackage{grffile} % allows spaces in file names
+\usepackage{verbatim} % allows multi-line comments
+\usepackage{amssymb,amsmath}
+\usepackage{sparklines}
+\usepackage{nonfloat}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{soul} %commented out 2014-May-9 was apparently generating a conflict
+\newcommand{\figw}[2]{\centerline{\includegraphics[width=#2\textwidth]{#1}}}
+\newcommand{\figh}[2]{\centerline{\includegraphics[height=#2\textheight]{#1}}}
+\newcommand{\fig}[1]{\centerline{\includegraphics{#1}}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+\usepackage[normalem]{ulem}
+\usepackage{natbib}
+\usepackage{tabularx}
+\usepackage{authblk}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage[colorinlistoftodos]{todonotes} 
+\usepackage[english]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{lmodern} % font definition
+\usepackage{amsmath} % math fonts
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz} 
+\usetikzlibrary{fit}
+% Font Selection - all commented out for Times (Computer Modern)
+% identified from http://ctan.unixbrain.com/info/Free_Math_Font_Survey/survey.html
+% there are more options but I got bored
+% \usepackage{cmbright} % A helvetica like sans serif font <- RNJ Like A Lot
+% ----------------------------- % Arial <- RNJ like this too
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+% ---------------------------- % Concrete text with Euler math (RNJ not as much as next)
+% \usepackage{ccfonts,eulervm} % Note that Concrete does not have a bold font, so Computer Modern
+% \usepackage[T1]{fontenc} % is used instead. Non-bold text output uses the CM-Super Concrete fonts.
+% ---------------------------- % Concrete text with Concrete math (RNJ like)
+% \usepackage{ccfonts} % Note that Concrete does not have a bold font, so Computer Modern
+% \usepackage[T1]{fontenc} % is used instead. Non-bold text output uses the CM-Super Concrete fonts.
+% ---------------------------- % Iwona text and math <- nice modern looking sans font
+% \usepackage[math]{iwona}
+% ---------------------------- % Kurier text and math <- similar to Iwona, said to avoid ink traps
+% \usepackage[math]{kurier} % RNJ: (Arial, CM Bright) > Iwona > default > ( Kurier, Concrete text)
+% ---------------------------- % Antykwa Póltawskiego text
+% \usepackage{antpolt} % a fancy, even whimsical Times-like font
+% \usepackage[QX]{fontenc}
+% ---------------------------- % Antykwa Torunska text and math
+% \usepackage[math]{anttor} % A fancy, but not as whimsical, Times-like font
+% --------------------------- % Arev Sans text with Arev math <--- VERY NICE sans font
+% \usepackage{arev} % like cm bright but larger
+\setcounter{tocdepth}{3} % 0 - Allow only \chapter in ToC
+\setcounter{secnumdepth}{5}
+\def\thepart {\Roman{part}}
+\def\thesection {\arabic{section}}
+\def\thesubsection {\thesection.\arabic{subsection}}
+\def\thesubsubsection {\thesubsection.\arabic{subsubsection}}
+\def\theparagraph {\thesubsubsection.\arabic{paragraph}}
+\def\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+\begin{document}
+% added 2018-03-15
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\scriptsize #1]%
+{\raggedright\scriptsize #1}}
+{\bf Alden Gross} \\
+11 Oct 2018 \\
+\begin{center}
+{\bf dif_cogsens}\\[0.5cm]
+\end{center}
+

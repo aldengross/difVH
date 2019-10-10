@@ -1,0 +1,88 @@
+TITLE: MIMIC MODEL FOR AUTOMATIC DIF DETECTION
+DATA: file is C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS/__000000.dat; 
+VARIABLE: 
+   names are 
+    id 
+    u1 
+    u2 
+    u3 
+    u4 
+    u5 
+    u6 
+    u7 
+    u8 
+    u9 
+    u10 
+    u11 
+    u12 
+    u13 
+    u14 
+    u15 
+    u16 
+    va2040   
+      ; 
+    missing are all (-9999) ;
+    idvariable = id ; 
+    categorical are 
+    u1 
+    u2 
+    u3 
+    u4 
+    u5 
+    u6 
+    u7 
+    u8 
+    u9 
+    u10 
+    u11 
+    u12 
+    u13 
+    u14 
+    u15 
+    u16 
+          ; 
+ GROUPING=va2040( 0=va20400 1=va20401 ) ; 
+ANALYSIS:  
+   estimator=WLSMV;  
+    coverage = .1; 
+OUTPUT:  
+MODEL:  
+    g by u1*; 
+    g by u2*; 
+    g by u3*; 
+    g by u4*; 
+    g by u5*; 
+    g by u6*; 
+    g by u7*; 
+    g by u8*; 
+    g by u9*; 
+    g by u10*; 
+    g by u11*; 
+    g by u12*; 
+    g by u13*; 
+    g by u14*; 
+    g by u15*; 
+    g by u16*; 
+    g@1 ; 
+MODEL va20401:
+    {u1 @1 } ; 
+    {u2 @1 } ; 
+    {u3 @1 } ; 
+    {u4 @1 } ; 
+    {u5 @1 } ; 
+    {u6 @1 } ; 
+    {u7 @1 } ; 
+    {u8 @1 } ; 
+    {u9 @1 } ; 
+    {u10 @1 } ; 
+    {u11 @1 } ; 
+    {u12 @1 } ; 
+    {u13 @1 } ; 
+    {u14 @1 } ; 
+    {u15 @1 } ; 
+    {u16 @1 } ; 
+   
+   .
+   
+SAVEDATA: difftest = __000004.dat ; 
+   

@@ -1,0 +1,404 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\vision_cog.log
+  log type:  text
+ opened on:  29 Oct 2018, 12:08:08
+
+.  
+. set varabbrev off, perm
+(set varabbrev preference recorded)
+
+. // open dataset
+. 
+. cd "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS"
+C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS
+
+.  
+.  
+.  *
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis-105.dta" , clear
+(Written by R.              )
+
+. *
+. 
+. capture drop visnum
+
+. bys idno: egen visnum=rank(visit)
+
+. tab visnum
+
+    rank of |
+    (visit) |
+    by idno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        799       74.26       74.26
+          2 |        226       21.00       95.26
+          3 |         51        4.74      100.00
+------------+-----------------------------------
+      Total |      1,076      100.00
+
+.  
+.  
+.  
+.  // generate hearing related var
+.  
+. // bpta_continuous 
+.  
+. rename  aud_r_500hz            aud4a3   
+
+. rename  aud_r_1000hz       aud4a7       
+
+. rename  aud_r_2000hz       aud4a9       
+
+. rename   aud_r_4000hz   aud4a13
+
+. 
+.  rename aud_l_500hz            aud4b3   
+
+. rename  aud_l_1000hz       aud4b7       
+
+. rename  aud_l_2000hz       aud4b9       
+
+. rename   aud_l_4000hz   aud4b13
+
+.  
+. 
+.  
+. 
+. // generate average PTA for right & left ear 
+. foreach x in ptar bpta ptal bptacat3  bptacat bptacat4 {
+  2.         capture drop `x'
+  3. }
+
+. 
+. gen ptar=(aud4a3 + aud4a7 + aud4a9 + aud4a13)/4                         //
+(92 missing values generated)
+
+.         gen ptal=(aud4b3 + aud4b7 + aud4b9 + aud4b13)/4                         //
+(92 missing values generated)
+
+.                 label var                                                                                               ///
+>                 ptar                                                                                                    ///
+>                 "PTA Right"                                                                                             //
+
+.         label var                                                                                                       ///
+>                 ptal                                                                                                    ///
+>                 "PTA Left"                                                                                              //
+
+.  
+. 
+.  // gen continuous var  
+. gen bpta = min(ptar, ptal) if !missing(ptar) & !missing(ptal)
+(92 missing values generated)
+
+. label var bpta "better ear hearing"
+
+. 
+.  codebook   ptar ptal bpta bpta_3f bpta_4f ,com // check the vars
+
+Variable   Obs Unique      Mean        Min       Max  Label
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ptar       984     78  31.75915       1.25     107.5  PTA Right
+ptal       984     75  33.06479        2.5    116.25  PTA Left
+bpta       984     70  29.36382       1.25      97.5  better ear hearing
+bpta_3f    981     50  25.66463  -1.666667  98.33333  bpta_3f
+bpta_4f    984     70  29.36382       1.25      97.5  bpta_4f
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.         
+.  
+. 
+. // gen binary var 
+. gen bptacat = (bpta >25 ) if!missing(bpta)
+(92 missing values generated)
+
+.                 label var                                                                                               ///
+>                         bptacat                                                                                         ///
+>                         "PTA binary <=25 vs. >25"                                                       //
+
+. label values bptacat bcat
+
+. label define bcat 1 "Hearing Impairment" 0 "Normal Hearing"
+
+. 
+. 
+. 
+. 
+.         gen bptacat3 = 0 if bpta_4f  <=25 
+(606 missing values generated)
+
+.         replace bptacat3 =1 if bpta_4f  >25  & bpta_4f  <= 40 
+(262 real changes made)
+
+.         replace bptacat3 =2 if bpta_4f  >40 & !missing(bpta_4f ) 
+(252 real changes made)
+
+.         
+.         label var bptacat3 "PTA 3 categories, better ear "
+
+.         label values bptacat3 cat3
+
+.         label define cat3  0 "<=25 db"                                                                          ///
+>                         1 ">25 & <=40 db"                                                                       ///
+>                         2 ">40 "                                                                        ///
+>                         
+
+.         codebook bptacat3
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bptacat3                                                                                                                                            PTA 3 categories, better ear 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+                 label:  cat3
+
+                 range:  [0,2]                        units:  1
+         unique values:  3                        missing .:  92/1,076
+
+            tabulation:  Freq.   Numeric  Label
+                           470         0  <=25 db
+                           262         1  >25 & <=40 db
+                           252         2  >40
+                            92         .  
+
+.         tab bptacat3
+
+        PTA 3 |
+  categories, |
+  better ear  |      Freq.     Percent        Cum.
+--------------+-----------------------------------
+      <=25 db |        470       47.76       47.76
+>25 & <=40 db |        262       26.63       74.39
+         >40  |        252       25.61      100.00
+--------------+-----------------------------------
+        Total |        984      100.00
+
+.         
+.         
+.         
+.         
+.         gen bptacat4 = 0 if bpta_4f  <=25 
+(606 missing values generated)
+
+.         replace bptacat4 =1 if bpta_4f  >25  & bpta_4f  <= 40 
+(262 real changes made)
+
+.         replace bptacat4 =2 if bpta_4f  >40 & bpta_4f  <=60 
+(225 real changes made)
+
+.         replace bptacat4 =3 if bpta_4f  > 60 & !missing(bpta_4f )
+(27 real changes made)
+
+.         
+.         label var bptacat4 "PTA 4 categories, better ear "
+
+.         label values bptacat4 cat4
+
+.         label define cat4  0 "<=25 db"                                                                          ///
+>                         1 ">25 & <=40 db"                                                                       ///
+>                         2 ">40 & <=60 db"                                                                       ///
+>                         3 ">60 db"      
+
+.         codebook bptacat4
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bptacat4                                                                                                                                            PTA 4 categories, better ear 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+                 label:  cat4
+
+                 range:  [0,3]                        units:  1
+         unique values:  4                        missing .:  92/1,076
+
+            tabulation:  Freq.   Numeric  Label
+                           470         0  <=25 db
+                           262         1  >25 & <=40 db
+                           225         2  >40 & <=60 db
+                            27         3  >60 db
+                            92         .  
+
+.         tab bptacat4
+
+        PTA 4 |
+  categories, |
+  better ear  |      Freq.     Percent        Cum.
+--------------+-----------------------------------
+      <=25 db |        470       47.76       47.76
+>25 & <=40 db |        262       26.63       74.39
+>40 & <=60 db |        225       22.87       97.26
+       >60 db |         27        2.74      100.00
+--------------+-----------------------------------
+        Total |        984      100.00
+
+.         
+. // transform variables 
+.  foreach trans in  trats trbts  {
+  2.  capture drop log`trans'
+  3.  gen log`trans' = log10(`trans')
+  4.  label var log`trans' "Log transform `trans'"
+  5.  codebook log`trans',com
+  6.  }
+(18 missing values generated)
+
+Variable    Obs Unique      Mean  Min       Max  Label
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+logtrats   1058     78  1.499061    1  2.477121  Log transform trats
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(47 missing values generated)
+
+Variable    Obs Unique      Mean       Min       Max  Label
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+logtrbts   1029    179  1.889216  1.380211  2.477121  Log transform trbts
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.  
+.  /*
+>   capture drop revbvrtot
+>  gen revbvrtot = 1/bvrtot
+>  label var revbvrtot  "reciprocal Benton visual test "
+>  codebook revtrats revtrbts revbvrtot
+>  foreach v in revtrats revtrbts revbvrtot {
+> hist `v',freq normal
+>  graph save "`v'",replace
+>  }
+>  graph combine "revtrats" "revtrbts" "revbvrtot"
+>  graph save "hist_tran",repalce
+> */
+.  
+.  
+.  
+.  // 
+.  
+.  
+.  
+.  save "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis-110.dta" ,replace 
+file C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis-110.dta saved
+
+. 
+.  
+.  
+. 
+end of do-file
+
+. do "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\CODE\difvh-120-select-cases-for-analysis.do"
+
+. * difvh-120-select-cases-for-analysis.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -------------------
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis-110.dta", clear  
+(Written by R.              )
+
+. 
+. tab bptacat, mi
+
+   PTA binary <=25 |
+           vs. >25 |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+    Normal Hearing |        470       43.68       43.68
+Hearing Impairment |        514       47.77       91.45
+                 . |         92        8.55      100.00
+-------------------+-----------------------------------
+             Total |      1,076      100.00
+
+. tab va2040 , mi
+
+   VA worse |
+ than 20/40 |
+ USING BCBE |
+         VA |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        917       85.22       85.22
+          1 |        130       12.08       97.30
+          . |         29        2.70      100.00
+------------+-----------------------------------
+      Total |      1,076      100.00
+
+. 
+. drop if bptacat>10000
+(92 observations deleted)
+
+. drop if va2040 >10000
+(24 observations deleted)
+
+. 
+. * re-generate visnum
+. 
+. capture drop visnum
+
+. bys idno: egen visnum=rank(visit)
+
+. tab visnum
+
+    rank of |
+    (visit) |
+    by idno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        732       76.25       76.25
+          2 |        188       19.58       95.83
+          3 |         40        4.17      100.00
+------------+-----------------------------------
+      Total |        960      100.00
+
+. 
+. tab visnum
+
+    rank of |
+    (visit) |
+    by idno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        732       76.25       76.25
+          2 |        188       19.58       95.83
+          3 |         40        4.17      100.00
+------------+-----------------------------------
+      Total |        960      100.00
+
+. codebook idno
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+idno                                                                                                                                                                         idno
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (double)
+
+                 range:  [270,7996]                   units:  1
+         unique values:  732                      missing .:  0/960
+
+                  mean:   5062.48
+              std. dev:   2213.69
+
+           percentiles:        10%       25%       50%       75%       90%
+                              1450      4673      5288      6218    7763.5
+
+. 
+. 
+. save "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta", replace
+file C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta saved
+
+. 
+end of do-file
+
+. duplicates report idno
+
+Duplicates in terms of idno
+
+--------------------------------------
+   copies | observations       surplus
+----------+---------------------------
+        1 |          544             0
+        2 |          296           148
+        3 |          120            80
+--------------------------------------
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD19b4_000000.tmp"
+
+.   
+. *wfenv LasiDIF , a(lasi) alg
+. cd "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\Resources" 
+C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\Resources
+
+. *use $derived/interim-lasi-120.dta, clear
+. 
+.  capture log close 

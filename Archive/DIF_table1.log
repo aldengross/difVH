@@ -1,0 +1,2889 @@
+. *** Vision ***
+. table1_mc, by(va2040)  ///
+> vars(age contn \ sbp contn \  dbp contn \ sex bin \  educat cat \ racecd cat \ ///
+> flucat  conts \flucat conts \ boscor  conts \ /// 
+> cvltca  contn \cvlfrs  contn \cvlfrl  contn \bvrtot  contn \ /// memory 
+> digfor  contn \digbac  contn \  /// attention 
+>   crdrot  contn \ simtot  contn \ clk325  contn \clk1110  contn \dsstot  contn \  /// executive
+> logtrats contn \ logtrbts  contn   )  /// transform
+>  format(%4.2f) saving(table1_vision.xls, replace) 
+
+  +-------------------------------------------------------------------------+
+  | factor                                            N_0   N_1   m_0   m_1 |
+  |-------------------------------------------------------------------------|
+  | age                                               844   116     0     0 |
+  |-------------------------------------------------------------------------|
+  | Composed Systolic blood pressure (mmHg)           826   114    18     2 |
+  |-------------------------------------------------------------------------|
+  | Composed Diastolic blood pressure (mmHg)          826   114    18     2 |
+  |-------------------------------------------------------------------------|
+  | sex                                               844   116     0     0 |
+  |-------------------------------------------------------------------------|
+  | Education category (highest attained)             831   115    13     1 |
+  |-------------------------------------------------------------------------|
+  | racecd                                            841   116     3     0 |
+  |-------------------------------------------------------------------------|
+  | CategFluency - mean(fruit, animal, veg)           835   115     9     1 |
+  | CategFluency - mean(fruit, animal, veg)           835   115     9     1 |
+  |-------------------------------------------------------------------------|
+  | BostonNaming - # correct of 60                    715   114   129     2 |
+  |-------------------------------------------------------------------------|
+  | CVL Total correct A                               820   115    24     1 |
+  |-------------------------------------------------------------------------|
+  | CVL #Corr A Short-Delay Free Recall               818   115    26     1 |
+  |-------------------------------------------------------------------------|
+  | CVL #Corr A Long-Delay Free Recall                818   115    26     1 |
+  |-------------------------------------------------------------------------|
+  | BVR Total errors                                  836   114     8     2 |
+  |-------------------------------------------------------------------------|
+  | WAIS-R Digits Forward Traditional score           822   115    22     1 |
+  |-------------------------------------------------------------------------|
+  | WAIS-R Digits Backward Traditional score          817   115    27     1 |
+  |-------------------------------------------------------------------------|
+  | Card Rotations: Total score (correct-incorrect)   821   109    23     7 |
+  |-------------------------------------------------------------------------|
+  | Similar Total score                               833   115    11     1 |
+  |-------------------------------------------------------------------------|
+  | Clock 3:25                                        717   115   127     1 |
+  |-------------------------------------------------------------------------|
+  | Clock 11:10                                       717   115   127     1 |
+  |-------------------------------------------------------------------------|
+  | dsstot                                            814   109    30     7 |
+  |-------------------------------------------------------------------------|
+  | Log transform trats                               836   115     8     1 |
+  |-------------------------------------------------------------------------|
+  | Log transform trbts                               816   108    28     8 |
+  +-------------------------------------------------------------------------+
+   N_ ... #records used below,   m_ ... #records not used
+ 
+  +---------------------------------------------------------------------------------------------------------------+
+  |                                                           va2040 = 0            va2040 = 1            p-value |
+  |---------------------------------------------------------------------------------------------------------------|
+  |                                                           N=844                 N=116                         |
+  |---------------------------------------------------------------------------------------------------------------|
+  | age                                                       72.83 (12.79)         84.11 (6.45)          <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Composed Systolic blood pressure (mmHg)                   118.06 (15.69)        120.17 (15.21)         0.18   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Composed Diastolic blood pressure (mmHg)                  67.23 (8.24)          65.77 (8.88)           0.079  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | sex                                                       387 (45.9%)           57 (49.1%)             0.51   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Education category (highest attained)             0       4 ( 0.5%)             2 ( 1.7%)              0.52   |
+  |                                                   1       43 ( 5.2%)            4 ( 3.5%)                     |
+  |                                                   2       85 (10.2%)            11 ( 9.6%)                    |
+  |                                                   3       185 (22.3%)           25 (21.7%)                    |
+  |                                                   4       514 (61.9%)           73 (63.5%)                    |
+  |---------------------------------------------------------------------------------------------------------------|
+  | racecd                                            0       27 ( 3.2%)            2 ( 1.7%)              0.14   |
+  |                                                   1       561 (66.7%)           88 (75.9%)                    |
+  |                                                   2       224 (26.6%)           19 (16.4%)                    |
+  |                                                   3       1 ( 0.1%)             0 ( 0.0%)                     |
+  |                                                   4       9 ( 1.1%)             2 ( 1.7%)                     |
+  |                                                   5       2 ( 0.2%)             1 ( 0.9%)                     |
+  |                                                   7       7 ( 0.8%)             1 ( 0.9%)                     |
+  |                                                   8       6 ( 0.7%)             3 ( 2.6%)                     |
+  |                                                   9       4 ( 0.5%)             0 ( 0.0%)                     |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CategFluency - mean(fruit, animal, veg)                   15.70 (13.00-18.00)   13.30 (11.00-15.30)   <0.001  |
+  | CategFluency - mean(fruit, animal, veg)                   15.70 (13.00-18.00)   13.30 (11.00-15.30)   <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | BostonNaming - # correct of 60                            56.00 (52.00-58.00)   55.00 (50.00-57.00)    0.010  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL Total correct A                                       50.94 (12.81)         42.56 (12.88)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL #Corr A Short-Delay Free Recall                       9.99 (3.52)           7.86 (3.59)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL #Corr A Long-Delay Free Recall                        10.51 (3.55)          8.24 (3.59)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | BVR Total errors                                          10.04 (5.46)          13.33 (5.23)          <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | WAIS-R Digits Forward Traditional score                   8.11 (2.23)           7.61 (2.23)            0.025  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | WAIS-R Digits Backward Traditional score                  7.05 (2.16)           6.48 (2.22)            0.008  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Card Rotations: Total score (correct-incorrect)           85.46 (41.90)         68.04 (36.54)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Similar Total score                                       21.19 (3.39)          20.63 (4.11)           0.11   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Clock 3:25                                                8.54 (1.23)           8.23 (1.59)            0.018  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Clock 11:10                                               9.00 (1.29)           8.69 (1.55)            0.021  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | dsstot                                                    42.41 (12.68)         34.05 (10.60)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Log transform trats                                       1.49 (0.17)           1.58 (0.18)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Log transform trbts                                       1.88 (0.20)           1.98 (0.19)           <0.001  |
+  +---------------------------------------------------------------------------------------------------------------+
+Data are presented as mean (SD) or median (IQR) for continuous measures, and n (%) for categorical measures.
+ 
+file table1_vision.xls saved
+.  
+. }
+. ***Hearing ***
+. table1_mc, by(bptacat)  ///
+> vars(age contn \ sbp contn \  dbp contn \ sex bin \  educat cat \ racecd cat \ ///
+> flucat  conts \flulet conts \ boscor  conts \ /// 
+> cvltca  contn \cvlfrs  contn \cvlfrl  contn \bvrtot  contn \ /// memory 
+> digfor  contn \digbac  contn \ trats  contn \ /// attention 
+> trbts  contn \ crdrot  contn \ simtot  contn \ clk325  contn \clk1110  contn \dsstot  contn \  /// executive
+>  logtrats contn \ logtrbts  contn   )  /// transform
+>  format(%4.2f) saving(table1_vision.xls, replace) 
+
+  +-------------------------------------------------------------------------+
+  | factor                                            N_0   N_1   m_0   m_1 |
+  |-------------------------------------------------------------------------|
+  | age                                               453   507     0     0 |
+  |-------------------------------------------------------------------------|
+  | Composed Systolic blood pressure (mmHg)           441   499    12     8 |
+  |-------------------------------------------------------------------------|
+  | Composed Diastolic blood pressure (mmHg)          441   499    12     8 |
+  |-------------------------------------------------------------------------|
+  | sex                                               453   507     0     0 |
+  |-------------------------------------------------------------------------|
+  | Education category (highest attained)             441   505    12     2 |
+  |-------------------------------------------------------------------------|
+  | racecd                                            451   506     2     1 |
+  |-------------------------------------------------------------------------|
+  | CategFluency - mean(fruit, animal, veg)           446   504     7     3 |
+  |-------------------------------------------------------------------------|
+  | LettrFluency - mean(F, A, S)                      447   504     6     3 |
+  |-------------------------------------------------------------------------|
+  | BostonNaming - # correct of 60                    333   496   120    11 |
+  |-------------------------------------------------------------------------|
+  | CVL Total correct A                               442   493    11    14 |
+  |-------------------------------------------------------------------------|
+  | CVL #Corr A Short-Delay Free Recall               441   492    12    15 |
+  |-------------------------------------------------------------------------|
+  | CVL #Corr A Long-Delay Free Recall                441   492    12    15 |
+  |-------------------------------------------------------------------------|
+  | BVR Total errors                                  448   502     5     5 |
+  |-------------------------------------------------------------------------|
+  | WAIS-R Digits Forward Traditional score           447   490     6    17 |
+  |-------------------------------------------------------------------------|
+  | WAIS-R Digits Backward Traditional score          444   488     9    19 |
+  |-------------------------------------------------------------------------|
+  | Trails - A test (seconds)                         447   504     6     3 |
+  |-------------------------------------------------------------------------|
+  | Trails - B test (seconds)                         439   485    14    22 |
+  |-------------------------------------------------------------------------|
+  | Card Rotations: Total score (correct-incorrect)   443   487    10    20 |
+  |-------------------------------------------------------------------------|
+  | Similar Total score                               446   502     7     5 |
+  |-------------------------------------------------------------------------|
+  | Clock 3:25                                        335   497   118    10 |
+  |-------------------------------------------------------------------------|
+  | Clock 11:10                                       336   496   117    11 |
+  |-------------------------------------------------------------------------|
+  | dsstot                                            439   484    14    23 |
+  |-------------------------------------------------------------------------|
+  | Log transform trats                               447   504     6     3 |
+  |-------------------------------------------------------------------------|
+  | Log transform trbts                               439   485    14    22 |
+  +-------------------------------------------------------------------------+
+   N_ ... #records used below,   m_ ... #records not used
+ 
+  +---------------------------------------------------------------------------------------------------------------+
+  |                                                           Normal Hearing        Hearing Impairment    p-value |
+  |---------------------------------------------------------------------------------------------------------------|
+  |                                                           N=453                 N=507                         |
+  |---------------------------------------------------------------------------------------------------------------|
+  | age                                                       66.56 (12.95)         81.02 (7.69)          <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Composed Systolic blood pressure (mmHg)                   115.79 (15.32)        120.54 (15.60)        <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Composed Diastolic blood pressure (mmHg)                  68.25 (8.37)          66.00 (8.16)          <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | sex                                                       173 (38.2%)           271 (53.5%)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Education category (highest attained)             0       2 ( 0.5%)             4 ( 0.8%)              0.33   |
+  |                                                   1       24 ( 5.4%)            23 ( 4.6%)                    |
+  |                                                   2       37 ( 8.4%)            59 (11.7%)                    |
+  |                                                   3       106 (24.0%)           104 (20.6%)                   |
+  |                                                   4       272 (61.7%)           315 (62.4%)                   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | racecd                                            0       18 ( 4.0%)            11 ( 2.2%)            <0.001  |
+  |                                                   1       262 (58.1%)           387 (76.5%)                   |
+  |                                                   2       151 (33.5%)           92 (18.2%)                    |
+  |                                                   3       1 ( 0.2%)             0 ( 0.0%)                     |
+  |                                                   4       8 ( 1.8%)             3 ( 0.6%)                     |
+  |                                                   5       1 ( 0.2%)             2 ( 0.4%)                     |
+  |                                                   7       4 ( 0.9%)             4 ( 0.8%)                     |
+  |                                                   8       2 ( 0.4%)             7 ( 1.4%)                     |
+  |                                                   9       4 ( 0.9%)             0 ( 0.0%)                     |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CategFluency - mean(fruit, animal, veg)                   16.70 (14.00-19.00)   14.15 (11.85-16.30)   <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | LettrFluency - mean(F, A, S)                              15.00 (12.00-17.70)   14.00 (11.30-17.30)    0.014  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | BostonNaming - # correct of 60                            56.00 (52.00-58.00)   55.00 (51.00-58.00)    0.14   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL Total correct A                                       53.41 (11.66)         46.76 (13.54)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL #Corr A Short-Delay Free Recall                       10.71 (3.29)          8.84 (3.64)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | CVL #Corr A Long-Delay Free Recall                        11.19 (3.24)          9.37 (3.75)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | BVR Total errors                                          9.31 (5.54)           11.44 (5.33)          <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | WAIS-R Digits Forward Traditional score                   8.34 (2.24)           7.78 (2.19)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | WAIS-R Digits Backward Traditional score                  7.27 (2.21)           6.72 (2.12)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Trails - A test (seconds)                                 30.26 (16.63)         38.98 (25.33)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Trails - B test (seconds)                                 76.65 (43.84)         96.42 (49.03)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Card Rotations: Total score (correct-incorrect)           91.74 (41.96)         75.85 (39.96)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Similar Total score                                       21.10 (3.44)          21.14 (3.54)           0.87   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Clock 3:25                                                8.58 (1.21)           8.44 (1.34)            0.13   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Clock 11:10                                               8.97 (1.35)           8.94 (1.32)            0.80   |
+  |---------------------------------------------------------------------------------------------------------------|
+  | dsstot                                                    46.62 (12.63)         36.71 (10.88)         <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Log transform trats                                       1.45 (0.16)           1.55 (0.17)           <0.001  |
+  |---------------------------------------------------------------------------------------------------------------|
+  | Log transform trbts                                       1.83 (0.20)           1.94 (0.19)           <0.001  |
+  +---------------------------------------------------------------------------------------------------------------+
+Data are presented as mean (SD) or median (IQR) for continuous measures, and n (%) for categorical measures.
+ 
+file table1_vision.xls saved
+.  
+. }
+
+.  
+. 
+. 
+.  
+. 
+.  
+. 
+. 
+. 
+. 
+. 
+end of do-file
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-310-table2.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+. * Summary statistics from modeling
+.  
+.  
+. tex \newpage
+(texdoc not initialized; nothing to do)
+
+. tex \begin{landscape}
+(texdoc not initialized; nothing to do)
+
+. tex \section{Parameters from the IRT measurement model}
+(texdoc not initialized; nothing to do)
+
+. tex Note. The IRT measurement model accounted for correlations
+(texdoc not initialized; nothing to do)
+
+. tex within a person by clustering on participants. \\[0.5cm]
+(texdoc not initialized; nothing to do)
+
+. 
+. tex \begin{longtable}{l cccc cccc ccc } \hline
+(texdoc not initialized; nothing to do)
+
+. tex Indicator & Factor loading, & Threshold \\
+(texdoc not initialized; nothing to do)
+
+. tex           & Raw (Standardized) \\
+(texdoc not initialized; nothing to do)
+
+. tex \hline
+(texdoc not initialized; nothing to do)
+
+. local names: rowfullnames est
+matrix est not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+.  codebook cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot , com
+
+Variable   Obs Unique      Mean       Min       Max  Label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cvlfrs     933     17  9.725616         0        16  CVL #Corr A Short-Delay Free Recall
+cvlfrl     933     17  10.23365         0        16  CVL #Corr A Long-Delay Free Recall
+flucat     950     67  15.44484       3.3        94  CategFluency - mean(fruit, animal, veg)
+flulet     951     74  14.67687         1        94  LettrFluency - mean(F, A, S)
+digfor     937     13  8.044824         0        14  WAIS-R Digits Forward Traditional score
+digbac     932     13  6.978541         0        13  WAIS-R Digits Backward Traditional score
+logtrats   951     76  1.502252         1  2.477121  Log transform trats
+logtrbts   924    174   1.89001  1.380211  2.477121  Log transform trbts
+bvrtot     950     28  10.43474         0        27  BVR Total errors
+ca_sum     948     30  16.23523         2        72  
+clk325     832      9       8.5         0        10  Clock 3:25
+clk1110    832      8  8.953125         0        10  Clock 11:10
+crdrot     930    182  83.41935        -7       204  Card Rotations: Total score (correct-incorrect)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+end of do-file
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta.dta", clear  
+file C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\EDA\difvh-120-select-cases-for-analysis.do"
+
+. * difvh-120-select-cases-for-analysis.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -------------------
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\difvh_analysis-110.dta", clear  
+(Written by R.              )
+
+. 
+. tab bptacat, mi
+
+   PTA binary <=25 |
+           vs. >25 |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+    Normal Hearing |        470       43.68       43.68
+Hearing Impairment |        514       47.77       91.45
+                 . |         92        8.55      100.00
+-------------------+-----------------------------------
+             Total |      1,076      100.00
+
+. tab va2040 , mi
+
+   VA worse |
+ than 20/40 |
+ USING BCBE |
+         VA |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        917       85.22       85.22
+          1 |        130       12.08       97.30
+          . |         29        2.70      100.00
+------------+-----------------------------------
+      Total |      1,076      100.00
+
+. 
+. drop if bptacat>10000
+(92 observations deleted)
+
+. drop if va2040 >10000
+(24 observations deleted)
+
+. 
+. * re-generate visnum
+. 
+. capture drop visnum
+
+. bys idno: egen visnum=rank(visit)
+
+. tab visnum
+
+    rank of |
+    (visit) |
+    by idno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        732       76.25       76.25
+          2 |        188       19.58       95.83
+          3 |         40        4.17      100.00
+------------+-----------------------------------
+      Total |        960      100.00
+
+. 
+. tab visnum
+
+    rank of |
+    (visit) |
+    by idno |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        732       76.25       76.25
+          2 |        188       19.58       95.83
+          3 |         40        4.17      100.00
+------------+-----------------------------------
+      Total |        960      100.00
+
+. codebook idno
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+idno                                                                                                                                                                                      idno
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (double)
+
+                 range:  [270,7996]                   units:  1
+         unique values:  732                      missing .:  0/960
+
+                  mean:   5062.48
+              std. dev:   2213.69
+
+           percentiles:        10%       25%       50%       75%       90%
+                              1450      4673      5288      6218    7763.5
+
+. 
+. 
+. save "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta", replace
+file C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta saved
+
+. 
+end of do-file
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta.dta", clear  
+file C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta",clear 
+(Written by R.              )
+
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. 
+. 
+. /*uncor_re */
+.  
+.  
+.  codebook cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot , com
+
+Variable   Obs Unique      Mean       Min       Max  Label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cvlfrs     933     17  9.725616         0        16  CVL #Corr A Short-Delay Free Recall
+cvlfrl     933     17  10.23365         0        16  CVL #Corr A Long-Delay Free Recall
+flucat     950     67  15.44484       3.3        94  CategFluency - mean(fruit, animal, veg)
+flulet     951     74  14.67687         1        94  LettrFluency - mean(F, A, S)
+digfor     937     13  8.044824         0        14  WAIS-R Digits Forward Traditional score
+digbac     932     13  6.978541         0        13  WAIS-R Digits Backward Traditional score
+logtrats   951     76  1.502252         1  2.477121  Log transform trats
+logtrbts   924    174   1.89001  1.380211  2.477121  Log transform trbts
+bvrtot     950     28  10.43474         0        27  BVR Total errors
+ca_sum     948     30  16.23523         2        72  
+clk325     832      9       8.5         0        10  Clock 3:25
+clk1110    832      8  8.953125         0        10  Clock 11:10
+crdrot     930    182  83.41935        -7       204  Card Rotations: Total score (correct-incorrect)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2.         standardize `x', replace
+  3. }
+cvlfrs generated as cvlfrs standardized with mean(sd)9.726(3.599), with 27 missing values
+cvlfrl generated as cvlfrl standardized with mean(sd)10.234(3.633), with 27 missing values
+flucat generated as flucat standardized with mean(sd)15.445(4.605), with 10 missing values
+flulet generated as flulet standardized with mean(sd)14.677(5.011), with 9 missing values
+digfor generated as digfor standardized with mean(sd)8.045(2.232), with 23 missing values
+digbac generated as digbac standardized with mean(sd)6.979(2.177), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)1.502(.171), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)1.89(.2), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)10.435(5.532), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)16.235(4.844), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)8.5(1.291), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)8.953(1.332), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)83.419(41.667), with 30 missing values
+flucat generated as flucat standardized with mean(sd)0(1), with 10 missing values
+flulet generated as flulet standardized with mean(sd)0(1), with 9 missing values
+digfor generated as digfor standardized with mean(sd)0(1), with 23 missing values
+digbac generated as digbac standardized with mean(sd)0(1), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)0(1), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)0(1), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)0(1), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)0(1), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)0(1), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)0(1), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)0(1), with 30 missing values
+
+.  
+. 
+.  // discretinize the cognitve variables ? 
+.  
+.  tex \item For the rest of the variables, we used a percentile dicretization approach to discretize variables into up to 9 categories.
+(texdoc not initialized; nothing to do)
+
+. 
+. local i=0
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    cap drop v`++i'
+  3. 
+.    dtize3 `x', bins(9)
+  4. 
+.   rename `x'_cat v`i'
+  5. 
+.    *xtile v`i' = `x' , nquantiles(9)
+. 
+.    local vlab : var label `x'
+  6. 
+.    label var v`i' "`vlab'"
+  7. 
+. }
+Categorization of cvlfrs CVL #Corr A Short-Delay Free Recall
+threshold 1 :   -2.46     
+threshold 2 :   -1.96     
+threshold 3 :   -1.47     
+threshold 4 :   -0.97     
+threshold 5 :   -0.48     
+threshold 6 :    0.01     
+threshold 7 :    0.51     
+threshold 8 :    1.00     
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrs
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of cvlfrl CVL #Corr A Long-Delay Free Recall
+threshold 1 :   -2.57     
+threshold 2 :   -2.08     
+threshold 3 :   -1.59     
+threshold 4 :   -1.10     
+threshold 5 :   -0.61     
+threshold 6 :   -0.13     
+threshold 7 :    0.36     
+threshold 8 :    0.85     
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrl
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+
+. 
+. local i=0 // MEM              EXF         LAN      DSB
+
+. 
+. foreach x in dwrr v1 inclrn    v2 v3 v5    v4 v6 v7 dsbb {
+  2. 
+.    cap drop u`++i'
+  3. 
+.    egen u`i' = group(`x')
+  4. 
+.    local vlab : var label `x'
+  5. 
+.    label var u`i' "`vlab'"
+  6. 
+. }
+variable dwrr not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  
+.  
+. use "C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\DATA\DERIVED\interim-difvh-120.dta",clear 
+(Written by R.              )
+
+. findname u*
+use_ha_r  use_ha_l  uncor_re
+
+. 
+. 
+. /*uncor_re */
+.  
+.  
+.  codebook cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot , com
+
+Variable   Obs Unique      Mean       Min       Max  Label
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cvlfrs     933     17  9.725616         0        16  CVL #Corr A Short-Delay Free Recall
+cvlfrl     933     17  10.23365         0        16  CVL #Corr A Long-Delay Free Recall
+flucat     950     67  15.44484       3.3        94  CategFluency - mean(fruit, animal, veg)
+flulet     951     74  14.67687         1        94  LettrFluency - mean(F, A, S)
+digfor     937     13  8.044824         0        14  WAIS-R Digits Forward Traditional score
+digbac     932     13  6.978541         0        13  WAIS-R Digits Backward Traditional score
+logtrats   951     76  1.502252         1  2.477121  Log transform trats
+logtrbts   924    174   1.89001  1.380211  2.477121  Log transform trbts
+bvrtot     950     28  10.43474         0        27  BVR Total errors
+ca_sum     948     30  16.23523         2        72  
+clk325     832      9       8.5         0        10  Clock 3:25
+clk1110    832      8  8.953125         0        10  Clock 11:10
+crdrot     930    182  83.41935        -7       204  Card Rotations: Total score (correct-incorrect)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2.         standardize `x', replace
+  3. }
+cvlfrs generated as cvlfrs standardized with mean(sd)9.726(3.599), with 27 missing values
+cvlfrl generated as cvlfrl standardized with mean(sd)10.234(3.633), with 27 missing values
+flucat generated as flucat standardized with mean(sd)15.445(4.605), with 10 missing values
+flulet generated as flulet standardized with mean(sd)14.677(5.011), with 9 missing values
+digfor generated as digfor standardized with mean(sd)8.045(2.232), with 23 missing values
+digbac generated as digbac standardized with mean(sd)6.979(2.177), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)1.502(.171), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)1.89(.2), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)10.435(5.532), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)16.235(4.844), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)8.5(1.291), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)8.953(1.332), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)83.419(41.667), with 30 missing values
+flucat generated as flucat standardized with mean(sd)0(1), with 10 missing values
+flulet generated as flulet standardized with mean(sd)0(1), with 9 missing values
+digfor generated as digfor standardized with mean(sd)0(1), with 23 missing values
+digbac generated as digbac standardized with mean(sd)0(1), with 28 missing values
+logtrats generated as logtrats standardized with mean(sd)0(1), with 9 missing values
+logtrbts generated as logtrbts standardized with mean(sd)0(1), with 36 missing values
+bvrtot generated as bvrtot standardized with mean(sd)0(1), with 10 missing values
+ca_sum generated as ca_sum standardized with mean(sd)0(1), with 12 missing values
+clk325 generated as clk325 standardized with mean(sd)0(1), with 128 missing values
+clk1110 generated as clk1110 standardized with mean(sd)0(1), with 128 missing values
+crdrot generated as crdrot standardized with mean(sd)0(1), with 30 missing values
+
+.  
+. 
+.  // discretinize the cognitve variables ? 
+.  
+.  tex \item For the rest of the variables, we used a percentile dicretization approach to discretize variables into up to 9 categories.
+(texdoc not initialized; nothing to do)
+
+. 
+. local i=0
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    cap drop v`++i'
+  3. 
+.    dtize3 `x', bins(9)
+  4. 
+.   rename `x'_cat v`i'
+  5. 
+.    *xtile v`i' = `x' , nquantiles(9)
+. 
+.    local vlab : var label `x'
+  6. 
+.    label var v`i' "`vlab'"
+  7. 
+. }
+Categorization of cvlfrs CVL #Corr A Short-Delay Free Recall
+threshold 1 :   -2.46     
+threshold 2 :   -1.96     
+threshold 3 :   -1.47     
+threshold 4 :   -0.97     
+threshold 5 :   -0.48     
+threshold 6 :    0.01     
+threshold 7 :    0.51     
+threshold 8 :    1.00     
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Short-Delay     |
+Free Recall                 |      Freq.
+----------------------------+-----------
+0: cvlfrs ( -2.70 -  -2.70) |         13
+1: cvlfrs ( -2.42 -  -2.15) |         18
+2: cvlfrs ( -1.87 -  -1.59) |         42
+3: cvlfrs ( -1.31 -  -1.04) |        101
+4: cvlfrs ( -0.76 -  -0.48) |        171
+5: cvlfrs ( -0.20 -  -0.20) |         85
+6: cvlfrs (  0.08 -   0.35) |        180
+7: cvlfrs (  0.63 -   0.91) |        171
+8: cvlfrs (  1.19 -   1.74) |        152
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrs
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of cvlfrl CVL #Corr A Long-Delay Free Recall
+threshold 1 :   -2.57     
+threshold 2 :   -2.08     
+threshold 3 :   -1.59     
+threshold 4 :   -1.10     
+threshold 5 :   -0.61     
+threshold 6 :   -0.13     
+threshold 7 :    0.36     
+threshold 8 :    0.85     
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CVL #Corr A Long-Delay Free |
+Recall                      |      Freq.
+----------------------------+-----------
+0: cvlfrl ( -2.82 -  -2.82) |         14
+1: cvlfrl ( -2.54 -  -2.27) |         12
+2: cvlfrl ( -1.99 -  -1.72) |         36
+3: cvlfrl ( -1.44 -  -1.17) |         83
+4: cvlfrl ( -0.89 -  -0.61) |        136
+5: cvlfrl ( -0.34 -  -0.34) |         90
+6: cvlfrl ( -0.06 -   0.21) |        189
+7: cvlfrl (  0.49 -   0.76) |        182
+8: cvlfrl (  1.04 -   1.59) |        191
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of cvlfrl
+
+Level    ES
+ 0       0        no variance
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of flucat CategFluency - mean(fruit, animal, veg)
+threshold 1 :   -1.54     
+threshold 2 :    0.65     
+threshold 3 :    2.83     
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+CategFluency - mean(fruit,  |
+animal, veg)                |      Freq.
+----------------------------+-----------
+0: flucat ( -2.64 -  -1.55) |         28
+1: flucat ( -1.46 -   0.62) |        728
+2: flucat (  0.71 -   2.73) |        192
+3: flucat (  3.44 -  17.06) |          2
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flucat
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of flulet LettrFluency - mean(F, A, S)
+threshold 1 :   -1.70     
+threshold 2 :    0.36     
+threshold 3 :    2.43     
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+LettrFluency - mean(F, A,   |
+S)                          |      Freq.
+----------------------------+-----------
+0: flulet ( -2.73 -  -1.73) |         18
+1: flulet ( -1.67 -   0.32) |        626
+2: flulet (  0.40 -   2.40) |        303
+3: flulet (  2.46 -  15.83) |          4
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of flulet
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+Categorization of digfor WAIS-R Digits Forward Traditional score
+threshold 1 :   -1.51     
+threshold 2 :   -0.82     
+threshold 3 :   -0.12     
+threshold 4 :    0.58     
+threshold 5 :    1.27     
+threshold 6 :    1.97     
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Forward       |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digfor ( -3.60 -  -1.81) |         30
+1: digfor ( -1.36 -  -0.92) |        244
+2: digfor ( -0.47 -  -0.47) |        120
+3: digfor ( -0.02 -   0.43) |        301
+4: digfor (  0.88 -   0.88) |         88
+5: digfor (  1.32 -   1.77) |        139
+6: digfor (  2.22 -   2.67) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digfor
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of digbac WAIS-R Digits Backward Traditional score
+threshold 1 :   -1.55     
+threshold 2 :   -0.88     
+threshold 3 :   -0.22     
+threshold 4 :    0.44     
+threshold 5 :    1.11     
+threshold 6 :    1.77     
+threshold 7 :    2.43     
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+WAIS-R Digits Backward      |
+Traditional score           |      Freq.
+----------------------------+-----------
+0: digbac ( -3.21 -  -1.83) |         23
+1: digbac ( -1.37 -  -0.91) |        207
+2: digbac ( -0.45 -  -0.45) |        193
+3: digbac (  0.01 -   0.01) |        165
+4: digbac (  0.47 -   0.93) |        221
+5: digbac (  1.39 -   1.39) |         60
+6: digbac (  1.85 -   2.31) |         58
+7: digbac (  2.77 -   2.77) |          5
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of digbac
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        trivial
+ 5       0        no variance
+ 6       0        trivial
+ 7       0        no variance
+Categorization of logtrats Log transform trats
+threshold 1 :   -1.98     
+threshold 2 :   -1.02     
+threshold 3 :   -0.06     
+threshold 4 :    0.90     
+threshold 5 :    1.86     
+threshold 6 :    2.82     
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trats |      Freq.
+------------------------------+-----------
+0: logtrats ( -2.94 -  -2.08) |         12
+1: logtrats ( -1.91 -  -1.05) |        116
+2: logtrats ( -0.93 -  -0.06) |        362
+3: logtrats (  0.02 -   0.88) |        308
+4: logtrats (  0.94 -   1.85) |        126
+5: logtrats (  1.89 -   2.81) |         18
+6: logtrats (  2.83 -   5.70) |          9
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrats
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+Categorization of logtrbts Log transform trbts
+threshold 1 :   -1.94     
+threshold 2 :   -1.33     
+threshold 3 :   -0.72     
+threshold 4 :   -0.11     
+threshold 5 :    0.50     
+threshold 6 :    1.11     
+threshold 7 :    1.72     
+threshold 8 :    2.33     
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Weighted frequencies
+
+------------------------------------------
+          Log transform trbts |      Freq.
+------------------------------+-----------
+0: logtrbts ( -2.55 -  -2.00) |         15
+1: logtrbts ( -1.86 -  -1.34) |         49
+2: logtrbts ( -1.28 -  -0.75) |        151
+3: logtrbts ( -0.71 -  -0.13) |        233
+4: logtrbts ( -0.10 -   0.48) |        225
+5: logtrbts (  0.51 -   1.10) |        130
+6: logtrbts (  1.12 -   1.72) |         64
+7: logtrbts (  1.73 -   2.31) |         34
+8: logtrbts (  2.35 -   2.94) |         23
+------------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of logtrbts
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of bvrtot BVR Total errors
+threshold 1 :   -1.62     
+threshold 2 :   -1.07     
+threshold 3 :   -0.53     
+threshold 4 :    0.01     
+threshold 5 :    0.55     
+threshold 6 :    1.10     
+threshold 7 :    1.64     
+threshold 8 :    2.18     
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+           BVR Total errors |      Freq.
+----------------------------+-----------
+0: bvrtot ( -1.89 -  -1.71) |         26
+1: bvrtot ( -1.52 -  -1.16) |        126
+2: bvrtot ( -0.98 -  -0.62) |        163
+3: bvrtot ( -0.44 -  -0.08) |        184
+4: bvrtot (  0.10 -   0.46) |        171
+5: bvrtot (  0.64 -   1.01) |        134
+6: bvrtot (  1.19 -   1.55) |         86
+7: bvrtot (  1.73 -   2.09) |         45
+8: bvrtot (  2.27 -   2.99) |         15
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of bvrtot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+Categorization of ca_sum 
+threshold 1 :   -2.14     
+threshold 2 :   -0.53     
+threshold 3 :    1.08     
+threshold 4 :    2.68     
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 ca_sum_cat |      Freq.
+----------------------------+-----------
+0: ca_sum ( -2.94 -  -2.32) |         12
+1: ca_sum ( -2.11 -  -0.67) |        234
+2: ca_sum ( -0.46 -   0.98) |        600
+3: ca_sum (  1.19 -   2.43) |         99
+4: ca_sum (  2.84 -  11.51) |          3
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of ca_sum
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+Categorization of clk325 Clock 3:25
+threshold 1 :   -3.14     
+threshold 2 :   -2.28     
+threshold 3 :   -1.42     
+threshold 4 :   -0.56     
+threshold 5 :    0.30     
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+                 Clock 3:25 |      Freq.
+----------------------------+-----------
+0: clk325 ( -6.58 -  -3.48) |         11
+1: clk325 ( -2.71 -  -2.71) |         10
+2: clk325 ( -1.94 -  -1.94) |         30
+3: clk325 ( -1.16 -  -1.16) |         77
+4: clk325 ( -0.39 -  -0.39) |        197
+5: clk325 (  0.39 -   1.16) |        507
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk325
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        trivial
+Categorization of clk1110 Clock 11:10
+threshold 1 :   -2.97     
+threshold 2 :   -2.13     
+threshold 3 :   -1.30     
+threshold 4 :   -0.47     
+threshold 5 :    0.37     
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Weighted frequencies
+
+-----------------------------------------
+                 Clock 11:10 |      Freq.
+-----------------------------+-----------
+0: clk1110 ( -6.72 -  -2.97) |         17
+1: clk1110 ( -2.22 -  -2.22) |         23
+2: clk1110 ( -1.47 -  -1.47) |         50
+3: clk1110 ( -0.72 -  -0.72) |        145
+4: clk1110 (  0.04 -   0.04) |        231
+5: clk1110 (  0.79 -   0.79) |        366
+-----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of clk1110
+
+Level    ES
+ 0       0        trivial
+ 1       0        no variance
+ 2       0        no variance
+ 3       0        no variance
+ 4       0        no variance
+ 5       0        no variance
+Categorization of crdrot Card Rotations: Total score (correct-incorrect)
+threshold 1 :   -1.89     
+threshold 2 :   -1.33     
+threshold 3 :   -0.76     
+threshold 4 :   -0.20     
+threshold 5 :    0.36     
+threshold 6 :    0.92     
+threshold 7 :    1.49     
+threshold 8 :    2.05     
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Weighted frequencies
+
+----------------------------------------
+Card Rotations: Total score |
+(correct-incorrect)         |      Freq.
+----------------------------+-----------
+0: crdrot ( -2.17 -  -1.91) |         13
+1: crdrot ( -1.88 -  -1.33) |         63
+2: crdrot ( -1.31 -  -0.78) |        144
+3: crdrot ( -0.75 -  -0.20) |        211
+4: crdrot ( -0.18 -   0.35) |        187
+5: crdrot (  0.37 -   0.90) |        142
+6: crdrot (  0.93 -   1.45) |         91
+7: crdrot (  1.53 -   2.01) |         46
+8: crdrot (  2.10 -   2.89) |         33
+----------------------------------------
+Residual Confounding
+ANOVA Effect sizes by  within categorized levels of crdrot
+
+Level    ES
+ 0       0        trivial
+ 1       0        trivial
+ 2       0        trivial
+ 3       0        trivial
+ 4       0        trivial
+ 5       0        trivial
+ 6       0        trivial
+ 7       0        trivial
+ 8       0        trivial
+
+. 
+. local i=0 // MEM              EXF         LAN      DSB
+
+. 
+. local vlist  "  cvlfrs cvlfrl flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110 crdrot   flucat flulet digfor digbac logtrats logtrbts bvrtot ca_sum clk325 clk1110
+>  crdrot"
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    cap drop u`++i'
+  3. 
+.    egen u`i' = group(`x')
+  4. 
+.    local vlab : var label `x'
+  5. 
+.    label var u`i' "`vlab'"
+  6. 
+. }
+(27 missing values generated)
+(27 missing values generated)
+(10 missing values generated)
+(9 missing values generated)
+(23 missing values generated)
+(28 missing values generated)
+(9 missing values generated)
+(36 missing values generated)
+(10 missing values generated)
+(12 missing values generated)
+(128 missing values generated)
+(128 missing values generated)
+(30 missing values generated)
+(10 missing values generated)
+(9 missing values generated)
+(23 missing values generated)
+(28 missing values generated)
+(9 missing values generated)
+(36 missing values generated)
+(10 missing values generated)
+(12 missing values generated)
+(128 missing values generated)
+(128 missing values generated)
+(30 missing values generated)
+
+. 
+. drop v1 v2 v3 v4 v5 v6 v7
+
+. 
+. 
+. foreach x in `vlist' {
+  2. 
+.    eme stdyx_moc_by_`x' , mat(est)
+  3.    local b`x' : di %4.2f `r(r1)'
+  4.    local foo=1
+  5.    eme thresholds_`x'_`foo', mat(est)
+  6.    local t`x' : di %4.2f `r(r1)'
+  7.    
+. }
+matrix est not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  log using figure1.log, text replace 
+log file already open
+r(604);
+
+end of do-file
+
+r(604);
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4a5c_000000.tmp"
+
+. * difvh-210-figure1-main-outcome-undadjusted.do
+. * Alden Gross
+. *  2 Aug 2018
+. * -----------------
+.  
+.  capture log close 

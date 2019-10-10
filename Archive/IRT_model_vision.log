@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\IRT_model_vision.log
+  log type:  text
+ opened on:   6 Nov 2018, 10:39:08
+
+.  
+.  
+. 
+end of do-file
+
+. tab bptacat
+
+   PTA binary <=25 |
+           vs. >25 |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+    Normal Hearing |        453       47.19       47.19
+Hearing Impairment |        507       52.81      100.00
+-------------------+-----------------------------------
+             Total |        960      100.00
+
+. exit, clear

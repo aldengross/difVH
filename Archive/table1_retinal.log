@@ -1,0 +1,633 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS\table1_retinal.log
+  log type:  text
+ opened on:   5 Sep 2018, 16:04:18
+
+. version 10 //I'm using Stata 15, but some  may have earlier versions
+
+. clear all //clear all data from memory
+
+. macro drop _all //clear all macros in memory
+
+. set more off   //give output all at once (not one screenful at a time)
+
+. set linesize 80 //maximum allowed width for output
+
+. 
+. // dataset preparation 
+. 
+.   use "C:\Users\sdu7\Box Sync\CCHPH\ARIC\projects\Retinal-Signs-and-Hearing\da
+> ta\2018_05_24_ARICwide-post2-0_v12.dta",clear
+
+.   merge 1:1 id  using "C:\Users\sdu7\Box Sync\ARIC_Datasets\Visit6\derive61_18
+> 0718.dta" // obtain visit 6 var
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                        11,789
+        from master                    11,789  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             4,003  (_merge==3)
+    -----------------------------------------
+
+.  
+. 
+.   
+.   
+.  // dataset exploration 
+.  
+.         codebook mildretinv3                                                  
+>           ///
+>          avn_eye_def                                                          
+>   ///
+>         foc_eye_def                                                           
+>   ///
+>         crae_b_low,com                                                        
+>                                   
+
+Variable       Obs Unique      Mean  Min  Max  Label
+--------------------------------------------------------------------------------
+mildretinv3  12641      2  .0304565    0    1  
+avn_eye_def  10967      2  .0620042    0    1  
+foc_eye_def  10447      2  .0788743    0    1  
+crae_b_low   11033      2   .252062    0    1  
+--------------------------------------------------------------------------------
+
+. 
+. // search for var name 
+.         
+.         foreach var in sex race age education hypert diab bpta{
+  2.         lookfor `var'
+  3.         }
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+gender          str2    %9s                   sex (from ftra22)
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+racegrp         str2    %9s                   race (from ftra23)
+racegrp51       str2    %2s                   Corrected Race (V1CORRA1)
+racecenter      float   %15.0g     rclbl      
+racegrp61       str2    %2s                   Corrected Race (V1CORRA1)
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+ret_hem_31      byte    %8.0g                 retinal hemorrhage indicator
+flam_hem_31     byte    %8.0g                 flame hemorrhage indicator
+blot_hem_31     byte    %8.0g                 blot hemorrhage indicator
+av_mabp_31      float   %9.0g                 average mean arterial blood
+                                                pressure
+lvhscr31        int     %8.0g                 cornell voltage in uv (s in v3+r
+                                                in avl)
+nlvhsc31        float   %9.0g                 cornell voltage in mm
+v3age31         byte    %8.0g                 age at visit 3
+rlba17          byte    %8.0g                 # of retinal hemorrhages
+rlba18          byte    %8.0g                 type of retinal hemorrhage
+rlba19          byte    %8.0g                 hemorrhages/microaneurysms
+rlba50          byte    %8.0g                 subretinal hemorrhage
+retf013         double  %12.0g                Calculated variable for
+                                                Age-related Maculopathy,
+                                                ARM_Severity
+retf025         double  %12.0g                Photo quality assessment, color
+                                                balance (images not too red),
+                                                Photo_Red_Chan
+retf030         double  %12.0g                Diabetic Retinopathy-
+                                                Hemmorhages/Micro-aneursyms,
+                                                DR_HMA
+retf038         double  %12.0g                Diabetic Retinopathy- Pre-retinal
+                                                or Vitreous Hemmorhage,
+                                                DR_PRH_VH
+retf052         double  %12.0g                ARM- Subretinal Hemmorhage,
+                                                ARM_Subret_Hem
+retf113         double  %12.0g                Calculated variable for
+                                                Age-related Maculopathy,
+                                                ARM_Severity
+retf125         double  %12.0g                Photo quality assessment, color
+                                                balance (images not too red),
+                                                Photo_Red_Chan
+retf130         double  %12.0g                Diabetic Retinopathy-
+                                                Hemmorhages/Micro-aneursyms,
+                                                DR_HMA
+retf138         double  %12.0g                Diabetic Retinopathy- Pre-retinal
+                                                or Vitreous Hemmorhage,
+                                                DR_PRH_VH
+retf152         double  %12.0g                ARM- Subretinal Hemmorhage,
+                                                ARM_Subret_Hem
+hom13           byte    %8.0g                 age of natural mother at death q13
+hom16a          byte    %8.0g                 age nat mother told had cancer
+                                                q16a
+hom16b          byte    %8.0g                 age nat mother told had diabetes
+                                                q16b
+hom16c          byte    %8.0g                 age nat mother told had high bp
+                                                q16c
+hom16d          byte    %8.0g                 age nat mother told had stroke
+                                                q16d
+hom16e          byte    %8.0g                 age nat mother told had ht attack
+                                                q16e
+hom17           byte    %8.0g                 age of natural mother q17
+hom19a          byte    %8.0g                 age nat mother told had cancer
+                                                q19a
+hom19b          byte    %8.0g                 age nat mother told had diabetes
+                                                q19b
+hom19c          byte    %8.0g                 age nat mother told had high bp
+                                                q19c
+hom19d          byte    %8.0g                 age nat mother told had stroke
+                                                q19d
+hom19e          byte    %8.0g                 age nat mother told had ht attack
+                                                q19e
+hom21           byte    %8.0g                 age of natural father at death q21
+hom24a          byte    %8.0g                 age nat father told had cancer
+                                                q24a
+hom24b          byte    %8.0g                 age nat father told had diabetes
+                                                q24b
+hom24c          byte    %8.0g                 age nat father told had high bp
+                                                q24c
+hom24d          byte    %8.0g                 age nat father told had stroke
+                                                q24d
+hom24e          byte    %8.0g                 age nat father told had ht attack
+                                                q24e
+hom25           byte    %8.0g                 age of natural father q25
+hom27a          byte    %8.0g                 age nat father told had cancer
+                                                q27a
+hom27b          byte    %8.0g                 age nat father told had diabetes
+                                                q27b
+hom27c          byte    %8.0g                 age nat father told had high bp
+                                                q27c
+hom27d          byte    %8.0g                 age nat father told had stroke
+                                                q27d
+hom27e          byte    %8.0g                 age nat father told had ht attack
+                                                q27e
+hom29           byte    %8.0g                 age 1st regularly smoked cigarets
+                                                q29
+hom31           byte    %8.0g                 age stopped smoking cigarettes q31
+hom38           byte    %8.0g                 age 1st regularly smoked a pipe
+                                                q38
+hom40           byte    %8.0g                 age stopped smoking a pipe q40
+hom45           byte    %8.0g                 age 1st regularly smoked cigars
+                                                q45
+hom47           byte    %8.0g                 age stopped smoking cigars q47
+lvhscr01        int     %8.0g                 cornell voltage in uv (s in v3+r
+                                                in avl)
+nlvhsc01        float   %9.0g                 cornell voltage in mm
+v1age01         byte    %8.0g                 age at visit 1
+momprechd       str1    %1s                   premature maternal history of chd:
+                                                age<60
+dadprechd       str1    %1s                   premature paternal history of chd:
+                                                age<55
+v5date51        long    %d                    Visit 5 Date, NCS Stage 1
+res_dna         str130  %130s                 Restrictions on DNA Usage
+neurocog_stat~2 str2    %2s                   Neurocognitive Status Ver.2
+                                                Matches Stage 2 Selection
+                                                Criteria (A=Atypical, T=Ty
+stage_1_type    str2    %2s                   Type of Stage 1 Exam (A=Full,
+                                                B=Abbreviated, C=Home, D=LTCF)
+                                                (RTS3)
+v5age51         double  %12.0g                Visit 5 age
+v5age52         double  %12.0g                Corrected Visit 5 age
+walk4m52        double  %12.0g                V5 Physical Function 4 Meter Walk,
+                                                Average Time of 2 Trials (BOTH
+                                                TRIAL WITH AID
+lvhscr51        double  %12.0g                V5 Cornell Voltage in UV (S in V3
+                                                + R in AVL)
+nlvhsc51        double  %12.0g                V5 Cornell Voltage in mm
+selected_stag~2 double  %12.0g                Selected to Stage 2 (1=Yes, 0=No)
+selected_stag~3 double  %12.0g                Selected to Stage 3 (1=Yes, 0=No)
+agev3           float   %9.0g                 
+agev3_c         float   %9.0g                 
+agev5           float   %9.0g                 
+agev5_c         float   %9.0g                 
+agev6           float   %9.0g                 
+agecat          float   %9.0g                 
+v6date61        long    %d                    V6 Stage 1 exam date
+v6age61         double  %12.0g                Visit 6 Age
+v6age62         double  %12.0g                Corrected Visit 6 Age
+lowlangdom61    double  %12.0g                V6 Language domain factor score is
+                                                present and <-1.5
+avgwalk4msp61   double  %12.0g                V6 Average 4M walking speed
+                                                (m/sec)
+walk4m62        double  %12.0g                V6 Physical Function 4 Meter Walk,
+                                                Average Time of 2 Trials (BOTH
+                                                TRIAL WITH AID
+ptaright61      double  %12.0g                Four Frequency Pure-tone Average
+                                                (PTA) of the Right Ear (dB HL)
+ptaleft61       double  %12.0g                Four Frequency Pure-tone Average
+                                                (PTA) of the Left Ear (dB HL)
+ptabetter61     double  %12.0g                Four Frequency Pure-tone Average
+                                                (PTA) of the Better Ear (smaller
+                                                PTA) (dB HL)
+ptabettercat61  double  %12.0g                Hearing Loss Category Based on the
+                                                Four Frequency Pure-tone Average
+                                                (PTA) of the
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+hom54           byte    %8.0g                 highest education completed q54
+elevel01        byte    %8.0g                 education level, definition 1
+elevel02        byte    %8.0g                 education level, definition 2
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+hypert34        byte    %8.0g                 v3 hypertension, def. 4
+hypert35        byte    %8.0g                 v3 hypertension, def. 5
+hypert36        byte    %8.0g                 v3 hypertension, def. 6
+hyptmd31        byte    %8.0g                 v3 hypertension medications, def.
+                                                1
+hyptmdcode31    byte    %8.0g                 hypertension lowering medication
+                                                within past 2 weeks (v3)
+hypert04        byte    %8.0g                 hypertension, definition 4
+hypert05        byte    %8.0g                 hypertension, definition 5
+hypert06        byte    %8.0g                 hypertension, definition 6
+hyptmd01        byte    %8.0g                 hypertension lowering med. use,
+                                                def. 1
+hyptmdcode01    byte    %8.0g                 hypertension lowering medication
+                                                within past 2 weeks (v1)
+hypert54        double  %12.0g                V5 HTN definition 4 (DIASTOLIC51
+                                                GE 90 or HTN medication)
+hypert55        double  %12.0g                V5 HTN definition 5 (SYSTOLIC51 GE
+                                                140 or DIASTOLIC51 GE 90 or HTN
+                                                medication)
+hypert56        double  %12.0g                V5 HTN definition 6 (SYSTOLIC51 GE
+                                                160 or DIASTOLIC51 GE 95 or HTN
+                                                medication)
+hypert57        double  %12.0g                V5 HTN definition 6 (SYSTOLIC51 GE
+                                                150 or DIASTOLIC51 GE 90 or HTN
+                                                medication)
+hyptmd51        double  %12.0g                V5 Hypertension Medications in
+                                                Past 4 Weeks: Self-reported
+hyptmdcode51    double  %12.0g                V5 Hypertension Lowering
+                                                Medication in Past 4 weeks -
+                                                Using 2004 med code
+hyptmd61        double  %12.0g                V6 Hypertension Medications in
+                                                past 4 weeks: Self-reported
+hyptmdcode61    double  %12.0g                V6 Hypertension Lowering
+                                                Medication in past 4 weeks -
+                                                Using 2004 Med Code
+hypert64        double  %12.0g                V6 HTN definition 4 (DIASTOLIC61
+                                                GE 90 or HTN medication)
+hypert65        double  %12.0g                V6 HTN definition 5 (SYSTOLIC61 GE
+                                                140 or DIASTOLIC61 GE 90 or HTN
+                                                medication)
+hypert66        double  %12.0g                V6 HTN definition 6 (SYSTOLIC61 GE
+                                                160 or DIASTOLIC61 GE 95 or HTN
+                                                medication)
+hypert67        double  %12.0g                V6 HTN definition 7 (SYSTOLIC61 GE
+                                                150 or DIASTOLIC61 GE 90 or HTN
+                                                medication)
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+diabts33        byte    %8.0g                 diabetes using lower cutpoint 140
+                                                mg/dl
+diabts34        byte    %8.0g                 diabetes using lower cutpoint 126
+                                                mg/dl
+diabetesrisk~31 float   %9.0g                 %risk of inc diabts w/in 9yrs (v3)
+rlba31          byte    %8.0g                 diabetic retinal level
+rlba31a         int     %8.0g                 diab. ret. level: support
+                                                evidence: a
+rlba31b         int     %8.0g                 diab. ret. level: support
+                                                evidence: b
+rlba31c         int     %8.0g                 diab. ret. level: support
+                                                evidence: c
+rlba31d         int     %8.0g                 diab. ret. level: support
+                                                evidence: d
+rlba31e         byte    %8.0g                 diab. ret. level: support
+                                                evidence: e
+retf029         double  %12.0g                Diabetic Retinopathy Level,
+                                                Diab_Ret_Level
+retf030         double  %12.0g                Diabetic Retinopathy-
+                                                Hemmorhages/Micro-aneursyms,
+                                                DR_HMA
+retf031         double  %12.0g                Diabetic Retinopathy - Hard
+                                                Exudate, DR_HE
+retf032         double  %12.0g                Diabetic Retinopathy - Soft
+                                                Exudate, DR_SE
+retf033         double  %12.0g                Diabetic Retinopathy- Intraretinal
+                                                Microvascular Abnormalities,
+                                                DR_IRMA
+retf034         double  %12.0g                Diabetic Retinopathy- Venous
+                                                Beading, DR_VB
+retf035         double  %12.0g                Diabetic Retinopathy- New Vessels
+                                                on Disc, DR_NVD
+retf036         double  %12.0g                Diabetic Retinopathy- New Vessels
+                                                Elsewhere, DR_NVE
+retf037         double  %12.0g                Diabetic Retinopthy- Fibrous
+                                                Proliferation, DR_FP
+retf038         double  %12.0g                Diabetic Retinopathy- Pre-retinal
+                                                or Vitreous Hemmorhage,
+                                                DR_PRH_VH
+retf039         double  %12.0g                Diabetic Retinopathy-
+                                                Photocoagulation Scar,
+                                                DR_PC_Scar
+retf040         double  %12.0g                Diabetic Retinopathy-Focal
+                                                Treatment, DR_Foc_Rx
+retf129         double  %12.0g                Diabetic Retinopathy Level,
+                                                Diab_Ret_Level
+retf130         double  %12.0g                Diabetic Retinopathy-
+                                                Hemmorhages/Micro-aneursyms,
+                                                DR_HMA
+retf131         double  %12.0g                Diabetic Retinopathy - Hard
+                                                Exudate, DR_HE
+retf132         double  %12.0g                Diabetic Retinopathy - Soft
+                                                Exudate, DR_SE
+retf133         double  %12.0g                Diabetic Retinopathy- Intraretinal
+                                                Microvascular Abnormalities,
+                                                DR_IRMA
+retf134         double  %12.0g                Diabetic Retinopathy- Venous
+                                                Beading, DR_VB
+retf135         double  %12.0g                Diabetic Retinopathy- New Vessels
+                                                on Disc, DR_NVD
+retf136         double  %12.0g                Diabetic Retinopathy- New Vessels
+                                                Elsewhere, DR_NVE
+retf137         double  %12.0g                Diabetic Retinopthy- Fibrous
+                                                Proliferation, DR_FP
+retf138         double  %12.0g                Diabetic Retinopathy- Pre-retinal
+                                                or Vitreous Hemmorhage,
+                                                DR_PRH_VH
+retf139         double  %12.0g                Diabetic Retinopathy-
+                                                Photocoagulation Scar,
+                                                DR_PC_Scar
+retf140         double  %12.0g                Diabetic Retinopathy-Focal
+                                                Treatment, DR_Foc_Rx
+retp016         double  %12.0g                Diabetic Retinopathy Level
+retp116         double  %12.0g                Diabetic Retinopathy Level
+hom10e          str1    %1s                   diabetes ever diagnosed?  q10e
+hom15b          str1    %1s                   natural mother have diabetes?
+                                                q15b
+hom16b          byte    %8.0g                 age nat mother told had diabetes
+                                                q16b
+hom18b          str1    %1s                   natural mother have diabetes?
+                                                q18b
+hom19b          byte    %8.0g                 age nat mother told had diabetes
+                                                q19b
+hom23b          str1    %1s                   natural father have diabetes?
+                                                q23b
+hom24b          byte    %8.0g                 age nat father told had diabetes
+                                                q24b
+hom26b          str1    %1s                   natural father have diabetes?
+                                                q26b
+hom27b          byte    %8.0g                 age nat father told had diabetes
+                                                q27b
+diabts02        byte    %8.0g                 diabetes
+diabts03        byte    %8.0g                 diabetes w/ fasting glucose
+                                                cutpt.<126
+diabetesrisk~01 float   %9.0g                 %risk of inc diabts w/in 9yrs (v1)
+momhistorydia   byte    %8.0g                 new maternal history of diabetes
+dadhistorydia   byte    %8.0g                 new paternal history of diabetes
+diabts53        double  %12.0g                V5 Diabetes - Lower Cutpoint 140
+                                                mg/dL
+diabts54        double  %12.0g                V5 Diabetes - Lower Cutpoint 126
+                                                mg/dL
+diabts55        double  %12.0g                V5 Diabetes - Lab and Meds Only,
+                                                Cutpoint 126 mg/dL
+diabts56        double  %12.0g                V5 Diabetes - Hemoglobin A1C,
+                                                cutpoint 6.5%
+diabmdcode51    double  %12.0g                V5 Diabetic Medications in past 4
+                                                weeks - Using 2004 Med Code
+diabts57        double  %12.0g                V5 Diabetes (DM medications or DM
+                                                reported on AFU)
+diabmdcode61    double  %12.0g                V6 Diabetic Medications in past 4
+                                                weeks - Using 2004 Med Code
+diabts63        double  %12.0g                V6 Diabetes - Lower Cutpoint 140
+                                                mg/dL
+diabts64        double  %12.0g                V6 Diabetes - Lower Cutpoint 126
+                                                mg/dL
+diabts65        double  %12.0g                V6 Diabetes - Lab and Meds Only,
+                                                Cutpoint 126 mg/dL
+diabts66        double  %12.0g                V6 Diabetes - Hemoglobin A1C,
+                                                cutpoint 6.5%
+diabts67        double  %12.0g                V6 Diabetes (DM medications or DM
+                                                reported on AFU)
+
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+bpta            float   %9.0g                 PTA better hearing ear
+bptacat         float   %9.0g                 PTA binary <=25 vs. >25
+bptacat4        float   %13.0g     cat4lbl    PTA 4 categories
+bptacat3        float   %13.0g     cat3lbl    PTA 3 categories
+
+.         
+. 
+.         
+.         
+.         // generate nwe var_  replace stirng var with numeric
+.         gen sex = 1 if gender61 == "F"
+(13,426 missing values generated)
+
+.         replace sex = 0 if gender61 == "M"
+(1,637 real changes made)
+
+.         label values sex gender
+
+.         label define gender 1 "Female" 0 "Male"
+
+.         codebook sex
+
+--------------------------------------------------------------------------------
+sex                                                                  (unlabeled)
+--------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+                 label:  gender
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  11,789/15,792
+
+            tabulation:  Freq.   Numeric  Label
+                         1,637         0  Male
+                         2,366         1  Female
+                        11,789         .  
+
+.         
+.         gen race = 1 if racegrp61 == "B"
+(14,814 missing values generated)
+
+.         replace race = 0 if racegrp61 == "W"
+(3,014 real changes made)
+
+.         label values race race
+
+.         label define race 1 "Black" 0 "White"
+
+.         codebook race
+
+--------------------------------------------------------------------------------
+race                                                                 (unlabeled)
+--------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+                 label:  race
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  11,800/15,792
+
+            tabulation:  Freq.   Numeric  Label
+                         3,014         0  White
+                           978         1  Black
+                        11,800         .  
+
+.         
+.         // keep necessary var 
+.    keep mildretinv3 bptacat3 bptacat4 sex race v3age31 v6age62   elevel02  ///
+>         hypert65  diabts64      hypert35  diabts34 ///
+>         bpta   bptacat  /// 
+>          mildretinv3 avn_eye_def  foc_eye_def   crae_b_low   
+
+.         
+.         
+.         
+.     // by retinopathy 
+.         table1_mc if !missing(bpta), by(mildretinv3) vars(sex bin \ race bin \
+>  v3age31 contn \v6age62  contn \ elevel02 cate\  ///
+>         hypert65 contn\ diabts64 contn \        hypert35 contn\ diabts34 contn
+> \ ///
+>         bpta contn \ bptacat cat )  /// 
+>         format(%4.2f)  saving(table1.xls , sheet( retino_3cat,replace) )
+
+  +-----------------------------------------------------------------------------
+> -------------------------+
+  | factor                                                                      
+>    N_0   N_1   m_0   m_1 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | sex                                                                         
+>  3,393    78     0     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | race                                                                        
+>  3,383    78    10     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | age at visit 3                                                              
+>  3,393    78     0     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | Corrected Visit 6 Age                                                       
+>  3,393    78     0     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | education level, definition 2                                               
+>  3,388    78     5     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | V6 HTN definition 5 (SYSTOLIC61 GE 140 or DIASTOLIC61 GE 90 or HTN medic..  
+>  3,330    75    63     3 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | V6 Diabetes - Lower Cutpoint 126 mg/dL                                      
+>  3,258    70   135     8 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | v3 hypertension, def. 5                                                     
+>  3,381    78    12     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | diabetes using lower cutpoint 126 mg/dl                                     
+>  3,380    78    13     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | PTA better hearing ear                                                      
+>  3,393    78     0     0 |
+  |-----------------------------------------------------------------------------
+> -------------------------|
+  | PTA binary <=25 vs. >25                                                     
+>  3,393    78     0     0 |
+  +-----------------------------------------------------------------------------
+> -------------------------+
+   N_ ... #records used below,   m_ ... #records not used
+ 
+  +-----------------------------------------------------------------------------
+> -----------------------------------------------------+
+  |                                                                             
+>          mildretinv3 = 0   mildretinv3 = 1   p-value |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  |                                                                             
+>          N=3,393           N=78                      |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | sex                                                                         
+>          2,019 (59.5%)     44 (56.4%)         0.58   |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | race                                                                        
+>          729 (21.5%)       29 (37.2%)        <0.001  |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | age at visit 3                                                              
+>          56.90 (4.65)      56.28 (4.25)       0.24   |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | Corrected Visit 6 Age                                                       
+>          79.43 (4.73)      78.76 (4.35)       0.21   |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | education level, definition 2                                               
+>  1       388 (11.5%)       15 (19.2%)         0.032  |
+  |                                                                             
+>  2       1,401 (41.4%)     36 (46.2%)                |
+  |                                                                             
+>  3       1,599 (47.2%)     27 (34.6%)                |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | V6 HTN definition 5 (SYSTOLIC61 GE 140 or DIASTOLIC61 GE 90 or HTN medic..  
+>          0.79 (0.40)       0.85 (0.36)        0.21   |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | V6 Diabetes - Lower Cutpoint 126 mg/dL                                      
+>          0.33 (0.47)       0.49 (0.50)        0.005  |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | v3 hypertension, def. 5                                                     
+>          0.28 (0.45)       0.41 (0.50)        0.015  |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | diabetes using lower cutpoint 126 mg/dl                                     
+>          0.07 (0.26)       0.15 (0.36)        0.006  |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | PTA better hearing ear                                                      
+>          33.15 (13.79)     30.51 (14.88)      0.096  |
+  |-----------------------------------------------------------------------------
+> -----------------------------------------------------|
+  | PTA binary <=25 vs. >25                                                     
+>  0       1,124 (33.1%)     34 (43.6%)         0.053  |
+  |                                                                             
+>  1       2,269 (66.9%)     44 (56.4%)                |
+  +-----------------------------------------------------------------------------
+> -----------------------------------------------------+
+Data are presented as mean (SD) for continuous measures, and n (%) for categoric
+> al measures.
+ 
+file table1.xls could not be saved
+r(603);
+
+end of do-file
+
+r(603);
+
+. pwd
+C:\Users\sdu7\Box Sync\R21_SENSE-MATTERS\DIFVH\POSTED\ANALYSIS
+
+. do "C:\Users\sdu7\AppData\Local\Temp\STD4020_000000.tmp"
+
+. 
+. 
+. 
+. // house keeping 
+. 
+. cd "C:\Users\sdu7\Box Sync\CCHPH\ARIC\projects\Retinal-Signs-and-Hearing\docum
+> entation"
+C:\Users\sdu7\Box Sync\CCHPH\ARIC\projects\Retinal-Signs-and-Hearing\documentati
+> on
+
+. capture log close _all
